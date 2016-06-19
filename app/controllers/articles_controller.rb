@@ -1,6 +1,8 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
 
+
+  impressionist
   # GET /articles
   # GET /articles.json
   def index
@@ -73,4 +75,5 @@ class ArticlesController < ApplicationController
     def article_params
       params.require(:article).permit(:title, :body)
     end
+
 end

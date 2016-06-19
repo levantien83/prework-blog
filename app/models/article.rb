@@ -6,4 +6,5 @@ class Article < ActiveRecord::Base
 			all
 		end
 	end
+	is_impressionable
 end

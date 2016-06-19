@@ -4,7 +4,9 @@
   <div class="card">
     <div class="card-block">
       <h4 class="card-title"><%= @article.title %></h4>
-      <p class="date">Submitted <%= time_ago_in_words(@article.created_at) %> ago</p>
+      <p class="date">Submitted <%= time_ago_in_words(@article.created_at) %> ago | 
+        <%= @article.impressionist_count %> views 
+      </p>
       <p class="card-text"><%= @markdown.render(@article.body).html_safe %></p>          
     </div>
     <div class="card-footer">

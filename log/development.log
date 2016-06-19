@@ -2346,3 +2346,574 @@ Processing by ArticlesController#index as HTML
   Rendered articles/_article.html.erb (3.5ms)
   Rendered articles/index.html.erb within layouts/application (25.0ms)
 Completed 200 OK in 129ms (Views: 127.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/articles" for ::1 at 2016-06-19 12:51:22 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (37.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ArticlesController#index as HTML
+  [1m[35mArticle Load (30.0ms)[0m  SELECT "articles".* FROM "articles"
+  Rendered articles/_article.html.erb (8.5ms)
+  Rendered articles/index.html.erb within layouts/application (170.7ms)
+Completed 200 OK in 656ms (Views: 497.0ms | ActiveRecord: 128.2ms)
+
+
+Started GET "/assets/bootstrap.self-e7dfe29e9f594eb85eead62e3ed95df169b0fc3d21fe0468a812e399c9fcc604.js?body=1" for ::1 at 2016-06-19 12:51:24 +0700
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for ::1 at 2016-06-19 12:51:24 +0700
+
+
+Started GET "/assets/application.self-922beb0487e4bb1588dcb7d90e53feefa58d51a7992556ef566c0babd0804d23.css?body=1" for ::1 at 2016-06-19 12:51:24 +0700
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for ::1 at 2016-06-19 12:51:24 +0700
+
+
+Started GET "/assets/turbolinks.self-6fb86ff58d930b560704818c7d9e5f60d83d65b91c6778c7f7e4210d5ba82127.js?body=1" for ::1 at 2016-06-19 12:51:24 +0700
+
+
+Started GET "/assets/articles.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-06-19 12:51:24 +0700
+
+
+Started GET "/assets/application.self-f8806224e027f3e3f0138ea9ce99319e298dfdb323304d1f1be6eae8e8c74724.js?body=1" for ::1 at 2016-06-19 12:51:24 +0700
+
+
+Started GET "/articles" for ::1 at 2016-06-19 12:51:26 +0700
+Processing by ArticlesController#index as HTML
+  [1m[36mArticle Load (0.5ms)[0m  [1mSELECT "articles".* FROM "articles"[0m
+  Rendered articles/_article.html.erb (3.5ms)
+  Rendered articles/index.html.erb within layouts/application (27.9ms)
+Completed 200 OK in 166ms (Views: 164.4ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/articles/1" for ::1 at 2016-06-19 12:51:27 +0700
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mArticle Load (0.5ms)[0m  SELECT  "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT 1  [["id", 1]]
+  Rendered articles/show.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 168ms (Views: 141.4ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/articles" for ::1 at 2016-06-19 12:51:30 +0700
+Processing by ArticlesController#index as HTML
+  [1m[36mArticle Load (0.5ms)[0m  [1mSELECT "articles".* FROM "articles"[0m
+  Rendered articles/_article.html.erb (3.0ms)
+  Rendered articles/index.html.erb within layouts/application (26.4ms)
+Completed 200 OK in 137ms (Views: 135.7ms | ActiveRecord: 0.5ms)
+  [1m[36mActiveRecord::SchemaMigration Load (55.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateImpressionsTable (20160619063713)
+  [1m[35m (16.1ms)[0m  BEGIN
+DEPRECATION WARNING: `#timestamps` was called without specifying an option for `null`. In Rails 5, this behavior will change to `null: false`. You should manually specify `null: true` to prevent the behavior of your existing migrations from changing. (called from block in up at c:/workspace/blog2/db/migrate/20160619063713_create_impressions_table.rb:15)
+  [1m[36m (648.8ms)[0m  [1mCREATE TABLE "impressions" ("id" serial primary key, "impressionable_type" character varying, "impressionable_id" integer, "user_id" integer, "controller_name" character varying, "action_name" character varying, "view_name" character varying, "request_hash" character varying, "ip_address" character varying, "session_hash" character varying, "message" text, "referrer" text, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (26.0ms)[0m  CREATE  INDEX  "impressionable_type_message_index" ON "impressions"  ("impressionable_type", "message", "impressionable_id")
+  [1m[36m (41.1ms)[0m  [1mCREATE  INDEX  "poly_request_index" ON "impressions"  ("impressionable_type", "impressionable_id", "request_hash")[0m
+  [1m[35m (29.9ms)[0m  CREATE  INDEX  "poly_ip_index" ON "impressions"  ("impressionable_type", "impressionable_id", "ip_address")
+  [1m[36m (20.6ms)[0m  [1mCREATE  INDEX  "poly_session_index" ON "impressions"  ("impressionable_type", "impressionable_id", "session_hash")[0m
+  [1m[35m (24.2ms)[0m  CREATE  INDEX  "controlleraction_request_index" ON "impressions"  ("controller_name", "action_name", "request_hash")
+  [1m[36m (27.4ms)[0m  [1mCREATE  INDEX  "controlleraction_ip_index" ON "impressions"  ("controller_name", "action_name", "ip_address")[0m
+  [1m[35m (38.5ms)[0m  CREATE  INDEX  "controlleraction_session_index" ON "impressions"  ("controller_name", "action_name", "session_hash")
+  [1m[36m (57.8ms)[0m  [1mCREATE  INDEX  "index_impressions_on_user_id" ON "impressions"  ("user_id")[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20160619063713"]]
+  [1m[36m (42.0ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.0ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (49.9ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'articles'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (20.0ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'comments'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+
+  [1m[36m (0.0ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'impressions'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+
+
+Started GET "/articles" for ::1 at 2016-06-19 13:54:35 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ArticlesController#index as HTML
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36mSQL (15.8ms)[0m  [1mINSERT INTO "impressions" ("impressionable_type", "controller_name", "action_name", "request_hash", "session_hash", "ip_address", "referrer", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["impressionable_type", "Article"], ["controller_name", "articles"], ["action_name", "index"], ["request_hash", "2c9fd10ca71f0dda7806d04afb9495fb1f1616e3e28353fc803d3389a97785fd"], ["session_hash", "7bd076bc18220b1ea7d6c8b4f8165db2"], ["ip_address", "::1"], ["referrer", "http://localhost:3000/articles?utf8=%E2%9C%93&search=&commit=Search"], ["created_at", "2016-06-19 06:54:35.921932"], ["updated_at", "2016-06-19 06:54:35.921932"]]
+  [1m[35m (27.4ms)[0m  COMMIT
+  [1m[36mArticle Load (42.1ms)[0m  [1mSELECT "articles".* FROM "articles"[0m
+  Rendered articles/_article.html.erb (116.5ms)
+  Rendered articles/index.html.erb within layouts/application (245.2ms)
+Completed 500 Internal Server Error in 596ms (ActiveRecord: 122.6ms)
+
+ActionView::Template::Error (undefined method `unique_impression_count' for nil:NilClass):
+    4:       <h4 class="card-title"><%= link_to article.title, article %></h4>
+    5:       <p class="date">
+    6:         Submitted <%= time_ago_in_words(article.created_at) %> ago | 
+    7:         <%=@article.unique_impression_count %> views 
+    8:       </p>
+    9:       <p class="card-text"><%= @markdown.render(article.body).html_safe %></p>          
+   10:     </div>
+  app/views/articles/_article.html.erb:7:in `_app_views_articles__article_html_erb___174239030_52134264'
+  app/views/articles/index.html.erb:8:in `_app_views_articles_index_html_erb__630967851_52546896'
+
+
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.0ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (8.3ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (1022.2ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.0ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.0ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.5ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (932.9ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.0ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (2167.3ms)
+
+
+Started GET "/articles" for ::1 at 2016-06-19 13:55:20 +0700
+Processing by ArticlesController#index as HTML
+  [1m[35m (0.5ms)[0m  BEGIN
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "impressions" ("impressionable_type", "controller_name", "action_name", "request_hash", "session_hash", "ip_address", "referrer", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["impressionable_type", "Article"], ["controller_name", "articles"], ["action_name", "index"], ["request_hash", "cd1147d8b71967145bc2f76efdec996a083c78420975d9bb3ef8e01fd9b0d42e"], ["session_hash", "7bd076bc18220b1ea7d6c8b4f8165db2"], ["ip_address", "::1"], ["referrer", "http://localhost:3000/articles?utf8=%E2%9C%93&search=&commit=Search"], ["created_at", "2016-06-19 06:55:20.534825"], ["updated_at", "2016-06-19 06:55:20.534825"]]
+  [1m[35m (1.0ms)[0m  COMMIT
+  [1m[36mArticle Load (0.5ms)[0m  [1mSELECT "articles".* FROM "articles"[0m
+  Rendered articles/_article.html.erb (15.5ms)
+  Rendered articles/index.html.erb within layouts/application (29.5ms)
+Completed 500 Internal Server Error in 72ms (ActiveRecord: 2.6ms)
+
+ActionView::Template::Error (undefined method `unique_impression_count' for #<Article:0x63101b8>):
+    4:       <h4 class="card-title"><%= link_to article.title, article %></h4>
+    5:       <p class="date">
+    6:         Submitted <%= time_ago_in_words(article.created_at) %> ago | 
+    7:         <%= article.unique_impression_count %> views 
+    8:       </p>
+    9:       <p class="card-text"><%= @markdown.render(article.body).html_safe %></p>          
+   10:     </div>
+  app/views/articles/_article.html.erb:7:in `_app_views_articles__article_html_erb___174239030_51925872'
+  app/views/articles/index.html.erb:8:in `_app_views_articles_index_html_erb__630967851_52546896'
+
+
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.0ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (17.1ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (944.9ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.0ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.0ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.5ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (909.4ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.0ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (16.4ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (2270.3ms)
+
+
+Started GET "/articles" for ::1 at 2016-06-19 13:57:36 +0700
+Processing by ArticlesController#index as HTML
+  [1m[35m (0.5ms)[0m  BEGIN
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "impressions" ("impressionable_type", "controller_name", "action_name", "request_hash", "session_hash", "ip_address", "referrer", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["impressionable_type", "Article"], ["controller_name", "articles"], ["action_name", "index"], ["request_hash", "da26521e0e710debb830702cc473ed544c678f33d1a93c30685866aab892052c"], ["session_hash", "7bd076bc18220b1ea7d6c8b4f8165db2"], ["ip_address", "::1"], ["referrer", "http://localhost:3000/articles?utf8=%E2%9C%93&search=&commit=Search"], ["created_at", "2016-06-19 06:57:36.556742"], ["updated_at", "2016-06-19 06:57:36.556742"]]
+  [1m[35m (10.9ms)[0m  COMMIT
+  [1m[36mArticle Load (0.5ms)[0m  [1mSELECT "articles".* FROM "articles"[0m
+  [1m[35m (28.7ms)[0m  SELECT DISTINCT COUNT(DISTINCT "impressions"."request_hash") FROM "impressions" WHERE "impressions"."impressionable_id" = $1 AND "impressions"."impressionable_type" = $2  [["impressionable_id", 1], ["impressionable_type", "Article"]]
+  [1m[36m (1.0ms)[0m  [1mSELECT DISTINCT COUNT(DISTINCT "impressions"."request_hash") FROM "impressions" WHERE "impressions"."impressionable_id" = $1 AND "impressions"."impressionable_type" = $2[0m  [["impressionable_id", 2], ["impressionable_type", "Article"]]
+  [1m[35m (0.5ms)[0m  SELECT DISTINCT COUNT(DISTINCT "impressions"."request_hash") FROM "impressions" WHERE "impressions"."impressionable_id" = $1 AND "impressions"."impressionable_type" = $2  [["impressionable_id", 3], ["impressionable_type", "Article"]]
+  [1m[36m (0.5ms)[0m  [1mSELECT DISTINCT COUNT(DISTINCT "impressions"."request_hash") FROM "impressions" WHERE "impressions"."impressionable_id" = $1 AND "impressions"."impressionable_type" = $2[0m  [["impressionable_id", 5], ["impressionable_type", "Article"]]
+  [1m[35m (0.5ms)[0m  SELECT DISTINCT COUNT(DISTINCT "impressions"."request_hash") FROM "impressions" WHERE "impressions"."impressionable_id" = $1 AND "impressions"."impressionable_type" = $2  [["impressionable_id", 4], ["impressionable_type", "Article"]]
+  Rendered articles/_article.html.erb (173.5ms)
+  Rendered articles/index.html.erb within layouts/application (188.0ms)
+Completed 200 OK in 1292ms (Views: 1242.1ms | ActiveRecord: 43.6ms)
+
+
+Started GET "/assets/application.self-922beb0487e4bb1588dcb7d90e53feefa58d51a7992556ef566c0babd0804d23.css?body=1" for ::1 at 2016-06-19 13:57:37 +0700
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for ::1 at 2016-06-19 13:57:37 +0700
+
+
+Started GET "/assets/bootstrap.self-e7dfe29e9f594eb85eead62e3ed95df169b0fc3d21fe0468a812e399c9fcc604.js?body=1" for ::1 at 2016-06-19 13:57:38 +0700
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for ::1 at 2016-06-19 13:57:38 +0700
+
+
+Started GET "/assets/turbolinks.self-6fb86ff58d930b560704818c7d9e5f60d83d65b91c6778c7f7e4210d5ba82127.js?body=1" for ::1 at 2016-06-19 13:57:38 +0700
+
+
+Started GET "/assets/articles.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-06-19 13:57:38 +0700
+
+
+Started GET "/assets/application.self-f8806224e027f3e3f0138ea9ce99319e298dfdb323304d1f1be6eae8e8c74724.js?body=1" for ::1 at 2016-06-19 13:57:38 +0700
+
+
+Started GET "/articles/1" for ::1 at 2016-06-19 13:57:47 +0700
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mArticle Load (0.5ms)[0m  [1mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "impressions" ("impressionable_type", "impressionable_id", "controller_name", "action_name", "request_hash", "session_hash", "ip_address", "referrer", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["impressionable_type", "Article"], ["impressionable_id", 1], ["controller_name", "articles"], ["action_name", "show"], ["request_hash", "d7a9947119ede35e39dbcc5d6c04824da49a5e42fa8909992a180a8d2b3d1c21"], ["session_hash", "7bd076bc18220b1ea7d6c8b4f8165db2"], ["ip_address", "::1"], ["referrer", "http://localhost:3000/articles"], ["created_at", "2016-06-19 06:57:47.430974"], ["updated_at", "2016-06-19 06:57:47.430974"]]
+  [1m[35m (1.5ms)[0m  COMMIT
+  Rendered articles/show.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 224ms (Views: 144.3ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/articles" for ::1 at 2016-06-19 13:57:51 +0700
+Processing by ArticlesController#index as HTML
+  [1m[36m (0.5ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "impressions" ("impressionable_type", "controller_name", "action_name", "request_hash", "session_hash", "ip_address", "referrer", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"  [["impressionable_type", "Article"], ["controller_name", "articles"], ["action_name", "index"], ["request_hash", "1d07ebfaff333aab6b29d7787c3d1bf65a80994f910b29c8f60481f9e7851b54"], ["session_hash", "7bd076bc18220b1ea7d6c8b4f8165db2"], ["ip_address", "::1"], ["referrer", "http://localhost:3000/articles/1"], ["created_at", "2016-06-19 06:57:51.991164"], ["updated_at", "2016-06-19 06:57:51.991164"]]
+  [1m[36m (1.3ms)[0m  [1mCOMMIT[0m
+  [1m[35mArticle Load (0.5ms)[0m  SELECT "articles".* FROM "articles"
+  [1m[36m (1.0ms)[0m  [1mSELECT DISTINCT COUNT(DISTINCT "impressions"."request_hash") FROM "impressions" WHERE "impressions"."impressionable_id" = $1 AND "impressions"."impressionable_type" = $2[0m  [["impressionable_id", 1], ["impressionable_type", "Article"]]
+  [1m[35m (0.5ms)[0m  SELECT DISTINCT COUNT(DISTINCT "impressions"."request_hash") FROM "impressions" WHERE "impressions"."impressionable_id" = $1 AND "impressions"."impressionable_type" = $2  [["impressionable_id", 2], ["impressionable_type", "Article"]]
+  [1m[36m (0.0ms)[0m  [1mSELECT DISTINCT COUNT(DISTINCT "impressions"."request_hash") FROM "impressions" WHERE "impressions"."impressionable_id" = $1 AND "impressions"."impressionable_type" = $2[0m  [["impressionable_id", 3], ["impressionable_type", "Article"]]
+  [1m[35m (0.0ms)[0m  SELECT DISTINCT COUNT(DISTINCT "impressions"."request_hash") FROM "impressions" WHERE "impressions"."impressionable_id" = $1 AND "impressions"."impressionable_type" = $2  [["impressionable_id", 5], ["impressionable_type", "Article"]]
+  [1m[36m (0.0ms)[0m  [1mSELECT DISTINCT COUNT(DISTINCT "impressions"."request_hash") FROM "impressions" WHERE "impressions"."impressionable_id" = $1 AND "impressions"."impressionable_type" = $2[0m  [["impressionable_id", 4], ["impressionable_type", "Article"]]
+  Rendered articles/_article.html.erb (16.3ms)
+  Rendered articles/index.html.erb within layouts/application (38.5ms)
+Completed 200 OK in 166ms (Views: 156.4ms | ActiveRecord: 4.3ms)
+
+
+Started GET "/articles/1" for ::1 at 2016-06-19 13:57:54 +0700
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mArticle Load (0.5ms)[0m  SELECT  "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "impressions" ("impressionable_type", "impressionable_id", "controller_name", "action_name", "request_hash", "session_hash", "ip_address", "referrer", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"  [["impressionable_type", "Article"], ["impressionable_id", 1], ["controller_name", "articles"], ["action_name", "show"], ["request_hash", "6cbd343e3331968c36da3e0cf78fc760ba8e45787e85efef12188ad994941c4a"], ["session_hash", "7bd076bc18220b1ea7d6c8b4f8165db2"], ["ip_address", "::1"], ["referrer", "http://localhost:3000/articles"], ["created_at", "2016-06-19 06:57:54.945279"], ["updated_at", "2016-06-19 06:57:54.945279"]]
+  [1m[36m (1.0ms)[0m  [1mCOMMIT[0m
+  Rendered articles/show.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 105ms (Views: 98.4ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/articles" for ::1 at 2016-06-19 13:57:56 +0700
+Processing by ArticlesController#index as HTML
+  [1m[35m (0.5ms)[0m  BEGIN
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "impressions" ("impressionable_type", "controller_name", "action_name", "request_hash", "session_hash", "ip_address", "referrer", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["impressionable_type", "Article"], ["controller_name", "articles"], ["action_name", "index"], ["request_hash", "1d7a83ea6ca39534f7bdf634eeabded4ca9126d925c2d7baec6e7eee10253c0f"], ["session_hash", "7bd076bc18220b1ea7d6c8b4f8165db2"], ["ip_address", "::1"], ["referrer", "http://localhost:3000/articles/1"], ["created_at", "2016-06-19 06:57:56.955553"], ["updated_at", "2016-06-19 06:57:56.955553"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36mArticle Load (0.5ms)[0m  [1mSELECT "articles".* FROM "articles"[0m
+  [1m[35m (0.5ms)[0m  SELECT DISTINCT COUNT(DISTINCT "impressions"."request_hash") FROM "impressions" WHERE "impressions"."impressionable_id" = $1 AND "impressions"."impressionable_type" = $2  [["impressionable_id", 1], ["impressionable_type", "Article"]]
+  [1m[36m (0.5ms)[0m  [1mSELECT DISTINCT COUNT(DISTINCT "impressions"."request_hash") FROM "impressions" WHERE "impressions"."impressionable_id" = $1 AND "impressions"."impressionable_type" = $2[0m  [["impressionable_id", 2], ["impressionable_type", "Article"]]
+  [1m[35m (0.0ms)[0m  SELECT DISTINCT COUNT(DISTINCT "impressions"."request_hash") FROM "impressions" WHERE "impressions"."impressionable_id" = $1 AND "impressions"."impressionable_type" = $2  [["impressionable_id", 3], ["impressionable_type", "Article"]]
+  [1m[36m (0.0ms)[0m  [1mSELECT DISTINCT COUNT(DISTINCT "impressions"."request_hash") FROM "impressions" WHERE "impressions"."impressionable_id" = $1 AND "impressions"."impressionable_type" = $2[0m  [["impressionable_id", 5], ["impressionable_type", "Article"]]
+  [1m[35m (0.0ms)[0m  SELECT DISTINCT COUNT(DISTINCT "impressions"."request_hash") FROM "impressions" WHERE "impressions"."impressionable_id" = $1 AND "impressions"."impressionable_type" = $2  [["impressionable_id", 4], ["impressionable_type", "Article"]]
+  Rendered articles/_article.html.erb (9.5ms)
+  Rendered articles/index.html.erb within layouts/application (29.5ms)
+Completed 200 OK in 150ms (Views: 140.8ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/articles/1" for ::1 at 2016-06-19 13:57:58 +0700
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mArticle Load (0.0ms)[0m  [1mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "impressions" ("impressionable_type", "impressionable_id", "controller_name", "action_name", "request_hash", "session_hash", "ip_address", "referrer", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["impressionable_type", "Article"], ["impressionable_id", 1], ["controller_name", "articles"], ["action_name", "show"], ["request_hash", "120391f09ad43eeb32b384fc37d411a4ce72b5e0f19973141861bb119e79a49e"], ["session_hash", "7bd076bc18220b1ea7d6c8b4f8165db2"], ["ip_address", "::1"], ["referrer", "http://localhost:3000/articles"], ["created_at", "2016-06-19 06:57:58.743623"], ["updated_at", "2016-06-19 06:57:58.743623"]]
+  [1m[35m (1.0ms)[0m  COMMIT
+  Rendered articles/show.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 113ms (Views: 104.3ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/articles" for ::1 at 2016-06-19 13:57:59 +0700
+Processing by ArticlesController#index as HTML
+  [1m[36m (0.5ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "impressions" ("impressionable_type", "controller_name", "action_name", "request_hash", "session_hash", "ip_address", "referrer", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"  [["impressionable_type", "Article"], ["controller_name", "articles"], ["action_name", "index"], ["request_hash", "40d9aca7216dce147057f1f10eb19f05bd0d4c61933ded517dab7d74d3eecfa5"], ["session_hash", "7bd076bc18220b1ea7d6c8b4f8165db2"], ["ip_address", "::1"], ["referrer", "http://localhost:3000/articles/1"], ["created_at", "2016-06-19 06:57:59.824469"], ["updated_at", "2016-06-19 06:57:59.824469"]]
+  [1m[36m (1.0ms)[0m  [1mCOMMIT[0m
+  [1m[35mArticle Load (0.5ms)[0m  SELECT "articles".* FROM "articles"
+  [1m[36m (0.0ms)[0m  [1mSELECT DISTINCT COUNT(DISTINCT "impressions"."request_hash") FROM "impressions" WHERE "impressions"."impressionable_id" = $1 AND "impressions"."impressionable_type" = $2[0m  [["impressionable_id", 1], ["impressionable_type", "Article"]]
+  [1m[35m (0.0ms)[0m  SELECT DISTINCT COUNT(DISTINCT "impressions"."request_hash") FROM "impressions" WHERE "impressions"."impressionable_id" = $1 AND "impressions"."impressionable_type" = $2  [["impressionable_id", 2], ["impressionable_type", "Article"]]
+  [1m[36m (0.0ms)[0m  [1mSELECT DISTINCT COUNT(DISTINCT "impressions"."request_hash") FROM "impressions" WHERE "impressions"."impressionable_id" = $1 AND "impressions"."impressionable_type" = $2[0m  [["impressionable_id", 3], ["impressionable_type", "Article"]]
+  [1m[35m (0.0ms)[0m  SELECT DISTINCT COUNT(DISTINCT "impressions"."request_hash") FROM "impressions" WHERE "impressions"."impressionable_id" = $1 AND "impressions"."impressionable_type" = $2  [["impressionable_id", 5], ["impressionable_type", "Article"]]
+  [1m[36m (0.5ms)[0m  [1mSELECT DISTINCT COUNT(DISTINCT "impressions"."request_hash") FROM "impressions" WHERE "impressions"."impressionable_id" = $1 AND "impressions"."impressionable_type" = $2[0m  [["impressionable_id", 4], ["impressionable_type", "Article"]]
+  Rendered articles/_article.html.erb (11.3ms)
+  Rendered articles/index.html.erb within layouts/application (31.3ms)
+Completed 200 OK in 157ms (Views: 149.3ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/articles/1" for ::1 at 2016-06-19 13:58:02 +0700
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mArticle Load (0.5ms)[0m  SELECT  "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36m (0.5ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "impressions" ("impressionable_type", "impressionable_id", "controller_name", "action_name", "request_hash", "session_hash", "ip_address", "referrer", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"  [["impressionable_type", "Article"], ["impressionable_id", 1], ["controller_name", "articles"], ["action_name", "show"], ["request_hash", "f53014326906b0dc40cec4eac57904123169fc97fa2fcdf47041f52125e99344"], ["session_hash", "7bd076bc18220b1ea7d6c8b4f8165db2"], ["ip_address", "::1"], ["referrer", "http://localhost:3000/articles"], ["created_at", "2016-06-19 06:58:02.940909"], ["updated_at", "2016-06-19 06:58:02.940909"]]
+  [1m[36m (1.0ms)[0m  [1mCOMMIT[0m
+  Rendered articles/show.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 111ms (Views: 103.0ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/articles" for ::1 at 2016-06-19 13:58:03 +0700
+Processing by ArticlesController#index as HTML
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "impressions" ("impressionable_type", "controller_name", "action_name", "request_hash", "session_hash", "ip_address", "referrer", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["impressionable_type", "Article"], ["controller_name", "articles"], ["action_name", "index"], ["request_hash", "f03cc6ef4110bced65413e26a29a9c745b0c54350d298525755feccac01cbeab"], ["session_hash", "7bd076bc18220b1ea7d6c8b4f8165db2"], ["ip_address", "::1"], ["referrer", "http://localhost:3000/articles/1"], ["created_at", "2016-06-19 06:58:03.954683"], ["updated_at", "2016-06-19 06:58:03.954683"]]
+  [1m[35m (1.0ms)[0m  COMMIT
+  [1m[36mArticle Load (0.5ms)[0m  [1mSELECT "articles".* FROM "articles"[0m
+  [1m[35m (0.0ms)[0m  SELECT DISTINCT COUNT(DISTINCT "impressions"."request_hash") FROM "impressions" WHERE "impressions"."impressionable_id" = $1 AND "impressions"."impressionable_type" = $2  [["impressionable_id", 1], ["impressionable_type", "Article"]]
+  [1m[36m (0.5ms)[0m  [1mSELECT DISTINCT COUNT(DISTINCT "impressions"."request_hash") FROM "impressions" WHERE "impressions"."impressionable_id" = $1 AND "impressions"."impressionable_type" = $2[0m  [["impressionable_id", 2], ["impressionable_type", "Article"]]
+  [1m[35m (0.5ms)[0m  SELECT DISTINCT COUNT(DISTINCT "impressions"."request_hash") FROM "impressions" WHERE "impressions"."impressionable_id" = $1 AND "impressions"."impressionable_type" = $2  [["impressionable_id", 3], ["impressionable_type", "Article"]]
+  [1m[36m (0.5ms)[0m  [1mSELECT DISTINCT COUNT(DISTINCT "impressions"."request_hash") FROM "impressions" WHERE "impressions"."impressionable_id" = $1 AND "impressions"."impressionable_type" = $2[0m  [["impressionable_id", 5], ["impressionable_type", "Article"]]
+  [1m[35m (0.5ms)[0m  SELECT DISTINCT COUNT(DISTINCT "impressions"."request_hash") FROM "impressions" WHERE "impressions"."impressionable_id" = $1 AND "impressions"."impressionable_type" = $2  [["impressionable_id", 4], ["impressionable_type", "Article"]]
+  Rendered articles/_article.html.erb (13.8ms)
+  Rendered articles/index.html.erb within layouts/application (34.0ms)
+Completed 200 OK in 149ms (Views: 140.0ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/articles/1" for ::1 at 2016-06-19 13:58:05 +0700
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mArticle Load (0.5ms)[0m  [1mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36mSQL (1.3ms)[0m  [1mINSERT INTO "impressions" ("impressionable_type", "impressionable_id", "controller_name", "action_name", "request_hash", "session_hash", "ip_address", "referrer", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["impressionable_type", "Article"], ["impressionable_id", 1], ["controller_name", "articles"], ["action_name", "show"], ["request_hash", "b811fd832993c65e783b2b2871e6cf3f5a4db3f19d2399ef1bfd9f508dc78e66"], ["session_hash", "7bd076bc18220b1ea7d6c8b4f8165db2"], ["ip_address", "::1"], ["referrer", "http://localhost:3000/articles"], ["created_at", "2016-06-19 06:58:05.718105"], ["updated_at", "2016-06-19 06:58:05.718105"]]
+  [1m[35m (10.9ms)[0m  COMMIT
+  Rendered articles/show.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 122ms (Views: 102.8ms | ActiveRecord: 12.7ms)
+
+
+Started GET "/articles" for ::1 at 2016-06-19 13:58:06 +0700
+Processing by ArticlesController#index as HTML
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "impressions" ("impressionable_type", "controller_name", "action_name", "request_hash", "session_hash", "ip_address", "referrer", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"  [["impressionable_type", "Article"], ["controller_name", "articles"], ["action_name", "index"], ["request_hash", "d88a0936f03cf01cc45b70f7f8d468edbc1667bbc5a22c3c589b5705dbd07be8"], ["session_hash", "7bd076bc18220b1ea7d6c8b4f8165db2"], ["ip_address", "::1"], ["referrer", "http://localhost:3000/articles/1"], ["created_at", "2016-06-19 06:58:06.743455"], ["updated_at", "2016-06-19 06:58:06.743455"]]
+  [1m[36m (1.3ms)[0m  [1mCOMMIT[0m
+  [1m[35mArticle Load (0.5ms)[0m  SELECT "articles".* FROM "articles"
+  [1m[36m (0.0ms)[0m  [1mSELECT DISTINCT COUNT(DISTINCT "impressions"."request_hash") FROM "impressions" WHERE "impressions"."impressionable_id" = $1 AND "impressions"."impressionable_type" = $2[0m  [["impressionable_id", 1], ["impressionable_type", "Article"]]
+  [1m[35m (0.5ms)[0m  SELECT DISTINCT COUNT(DISTINCT "impressions"."request_hash") FROM "impressions" WHERE "impressions"."impressionable_id" = $1 AND "impressions"."impressionable_type" = $2  [["impressionable_id", 2], ["impressionable_type", "Article"]]
+  [1m[36m (0.5ms)[0m  [1mSELECT DISTINCT COUNT(DISTINCT "impressions"."request_hash") FROM "impressions" WHERE "impressions"."impressionable_id" = $1 AND "impressions"."impressionable_type" = $2[0m  [["impressionable_id", 3], ["impressionable_type", "Article"]]
+  [1m[35m (0.5ms)[0m  SELECT DISTINCT COUNT(DISTINCT "impressions"."request_hash") FROM "impressions" WHERE "impressions"."impressionable_id" = $1 AND "impressions"."impressionable_type" = $2  [["impressionable_id", 5], ["impressionable_type", "Article"]]
+  [1m[36m (0.5ms)[0m  [1mSELECT DISTINCT COUNT(DISTINCT "impressions"."request_hash") FROM "impressions" WHERE "impressions"."impressionable_id" = $1 AND "impressions"."impressionable_type" = $2[0m  [["impressionable_id", 4], ["impressionable_type", "Article"]]
+  Rendered articles/_article.html.erb (11.5ms)
+  Rendered articles/index.html.erb within layouts/application (31.5ms)
+Completed 200 OK in 141ms (Views: 132.2ms | ActiveRecord: 4.3ms)
+
+
+Started GET "/articles/2" for ::1 at 2016-06-19 13:58:32 +0700
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mArticle Load (0.0ms)[0m  SELECT  "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36m (0.5ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "impressions" ("impressionable_type", "impressionable_id", "controller_name", "action_name", "request_hash", "session_hash", "ip_address", "referrer", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"  [["impressionable_type", "Article"], ["impressionable_id", 2], ["controller_name", "articles"], ["action_name", "show"], ["request_hash", "9befae7e0066d4fb1cbfd7a4e824a2dcffef4ee9fd88e114aa1fb8fd4dbece03"], ["session_hash", "7bd076bc18220b1ea7d6c8b4f8165db2"], ["ip_address", "::1"], ["referrer", "http://localhost:3000/articles"], ["created_at", "2016-06-19 06:58:32.762815"], ["updated_at", "2016-06-19 06:58:32.762815"]]
+  [1m[36m (1.0ms)[0m  [1mCOMMIT[0m
+  Rendered articles/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 110ms (Views: 100.8ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/articles" for ::1 at 2016-06-19 13:58:33 +0700
+Processing by ArticlesController#index as HTML
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "impressions" ("impressionable_type", "controller_name", "action_name", "request_hash", "session_hash", "ip_address", "referrer", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["impressionable_type", "Article"], ["controller_name", "articles"], ["action_name", "index"], ["request_hash", "3fc96d96a76d3bd0282b4fd01a36f37e11516e1564a52395aceb3e30b6abc85a"], ["session_hash", "7bd076bc18220b1ea7d6c8b4f8165db2"], ["ip_address", "::1"], ["referrer", "http://localhost:3000/articles/2"], ["created_at", "2016-06-19 06:58:33.857632"], ["updated_at", "2016-06-19 06:58:33.857632"]]
+  [1m[35m (0.9ms)[0m  COMMIT
+  [1m[36mArticle Load (0.0ms)[0m  [1mSELECT "articles".* FROM "articles"[0m
+  [1m[35m (0.5ms)[0m  SELECT DISTINCT COUNT(DISTINCT "impressions"."request_hash") FROM "impressions" WHERE "impressions"."impressionable_id" = $1 AND "impressions"."impressionable_type" = $2  [["impressionable_id", 1], ["impressionable_type", "Article"]]
+  [1m[36m (0.5ms)[0m  [1mSELECT DISTINCT COUNT(DISTINCT "impressions"."request_hash") FROM "impressions" WHERE "impressions"."impressionable_id" = $1 AND "impressions"."impressionable_type" = $2[0m  [["impressionable_id", 2], ["impressionable_type", "Article"]]
+  [1m[35m (0.5ms)[0m  SELECT DISTINCT COUNT(DISTINCT "impressions"."request_hash") FROM "impressions" WHERE "impressions"."impressionable_id" = $1 AND "impressions"."impressionable_type" = $2  [["impressionable_id", 3], ["impressionable_type", "Article"]]
+  [1m[36m (0.0ms)[0m  [1mSELECT DISTINCT COUNT(DISTINCT "impressions"."request_hash") FROM "impressions" WHERE "impressions"."impressionable_id" = $1 AND "impressions"."impressionable_type" = $2[0m  [["impressionable_id", 5], ["impressionable_type", "Article"]]
+  [1m[35m (0.5ms)[0m  SELECT DISTINCT COUNT(DISTINCT "impressions"."request_hash") FROM "impressions" WHERE "impressions"."impressionable_id" = $1 AND "impressions"."impressionable_type" = $2  [["impressionable_id", 4], ["impressionable_type", "Article"]]
+  Rendered articles/_article.html.erb (11.6ms)
+  Rendered articles/index.html.erb within layouts/application (32.3ms)
+Completed 200 OK in 150ms (Views: 141.9ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/articles/5" for ::1 at 2016-06-19 13:58:38 +0700
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mArticle Load (0.0ms)[0m  [1mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "impressions" ("impressionable_type", "impressionable_id", "controller_name", "action_name", "request_hash", "session_hash", "ip_address", "referrer", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["impressionable_type", "Article"], ["impressionable_id", 5], ["controller_name", "articles"], ["action_name", "show"], ["request_hash", "e174a0202fb11405796c5d5ab8ff1ab09997dc2e2528c31c9b6def4cdfd0ad18"], ["session_hash", "7bd076bc18220b1ea7d6c8b4f8165db2"], ["ip_address", "::1"], ["referrer", "http://localhost:3000/articles"], ["created_at", "2016-06-19 06:58:38.174840"], ["updated_at", "2016-06-19 06:58:38.174840"]]
+  [1m[35m (1.1ms)[0m  COMMIT
+  Rendered articles/show.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 109ms (Views: 101.7ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/articles" for ::1 at 2016-06-19 13:58:39 +0700
+Processing by ArticlesController#index as HTML
+  [1m[36m (0.5ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "impressions" ("impressionable_type", "controller_name", "action_name", "request_hash", "session_hash", "ip_address", "referrer", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"  [["impressionable_type", "Article"], ["controller_name", "articles"], ["action_name", "index"], ["request_hash", "199de5ccf75ab181837aab2800bb52f6ae555a1bab37848ee4170b6f139619da"], ["session_hash", "7bd076bc18220b1ea7d6c8b4f8165db2"], ["ip_address", "::1"], ["referrer", "http://localhost:3000/articles/5"], ["created_at", "2016-06-19 06:58:39.416730"], ["updated_at", "2016-06-19 06:58:39.416730"]]
+  [1m[36m (1.0ms)[0m  [1mCOMMIT[0m
+  [1m[35mArticle Load (0.5ms)[0m  SELECT "articles".* FROM "articles"
+  [1m[36m (0.5ms)[0m  [1mSELECT DISTINCT COUNT(DISTINCT "impressions"."request_hash") FROM "impressions" WHERE "impressions"."impressionable_id" = $1 AND "impressions"."impressionable_type" = $2[0m  [["impressionable_id", 1], ["impressionable_type", "Article"]]
+  [1m[35m (0.5ms)[0m  SELECT DISTINCT COUNT(DISTINCT "impressions"."request_hash") FROM "impressions" WHERE "impressions"."impressionable_id" = $1 AND "impressions"."impressionable_type" = $2  [["impressionable_id", 2], ["impressionable_type", "Article"]]
+  [1m[36m (0.0ms)[0m  [1mSELECT DISTINCT COUNT(DISTINCT "impressions"."request_hash") FROM "impressions" WHERE "impressions"."impressionable_id" = $1 AND "impressions"."impressionable_type" = $2[0m  [["impressionable_id", 3], ["impressionable_type", "Article"]]
+  [1m[35m (0.0ms)[0m  SELECT DISTINCT COUNT(DISTINCT "impressions"."request_hash") FROM "impressions" WHERE "impressions"."impressionable_id" = $1 AND "impressions"."impressionable_type" = $2  [["impressionable_id", 5], ["impressionable_type", "Article"]]
+  [1m[36m (0.0ms)[0m  [1mSELECT DISTINCT COUNT(DISTINCT "impressions"."request_hash") FROM "impressions" WHERE "impressions"."impressionable_id" = $1 AND "impressions"."impressionable_type" = $2[0m  [["impressionable_id", 4], ["impressionable_type", "Article"]]
+  Rendered articles/_article.html.erb (12.0ms)
+  Rendered articles/index.html.erb within layouts/application (33.0ms)
+Completed 200 OK in 162ms (Views: 151.4ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/articles" for ::1 at 2016-06-19 13:59:56 +0700
+Processing by ArticlesController#index as HTML
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "impressions" ("impressionable_type", "controller_name", "action_name", "request_hash", "session_hash", "ip_address", "referrer", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["impressionable_type", "Article"], ["controller_name", "articles"], ["action_name", "index"], ["request_hash", "ae9617da7bffb86c53727dda9f3b8a3ccc01ce1408984e2c58a3a25784dffa30"], ["session_hash", "7bd076bc18220b1ea7d6c8b4f8165db2"], ["ip_address", "::1"], ["referrer", "http://localhost:3000/articles?utf8=%E2%9C%93&search=&commit=Search"], ["created_at", "2016-06-19 06:59:56.276235"], ["updated_at", "2016-06-19 06:59:56.276235"]]
+  [1m[35m (1.0ms)[0m  COMMIT
+  [1m[36mArticle Load (0.5ms)[0m  [1mSELECT "articles".* FROM "articles"[0m
+  [1m[35m (0.5ms)[0m  SELECT DISTINCT COUNT(DISTINCT "impressions"."request_hash") FROM "impressions" WHERE "impressions"."impressionable_id" = $1 AND "impressions"."impressionable_type" = $2  [["impressionable_id", 1], ["impressionable_type", "Article"]]
+  [1m[36m (0.5ms)[0m  [1mSELECT DISTINCT COUNT(DISTINCT "impressions"."request_hash") FROM "impressions" WHERE "impressions"."impressionable_id" = $1 AND "impressions"."impressionable_type" = $2[0m  [["impressionable_id", 2], ["impressionable_type", "Article"]]
+  [1m[35m (0.5ms)[0m  SELECT DISTINCT COUNT(DISTINCT "impressions"."request_hash") FROM "impressions" WHERE "impressions"."impressionable_id" = $1 AND "impressions"."impressionable_type" = $2  [["impressionable_id", 3], ["impressionable_type", "Article"]]
+  [1m[36m (0.0ms)[0m  [1mSELECT DISTINCT COUNT(DISTINCT "impressions"."request_hash") FROM "impressions" WHERE "impressions"."impressionable_id" = $1 AND "impressions"."impressionable_type" = $2[0m  [["impressionable_id", 5], ["impressionable_type", "Article"]]
+  [1m[35m (0.5ms)[0m  SELECT DISTINCT COUNT(DISTINCT "impressions"."request_hash") FROM "impressions" WHERE "impressions"."impressionable_id" = $1 AND "impressions"."impressionable_type" = $2  [["impressionable_id", 4], ["impressionable_type", "Article"]]
+  Rendered articles/_article.html.erb (12.2ms)
+  Rendered articles/index.html.erb within layouts/application (26.7ms)
+Completed 200 OK in 121ms (Views: 112.3ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for ::1 at 2016-06-19 13:59:56 +0700
+
+
+Started GET "/assets/bootstrap.self-e7dfe29e9f594eb85eead62e3ed95df169b0fc3d21fe0468a812e399c9fcc604.js?body=1" for ::1 at 2016-06-19 13:59:56 +0700
+
+
+Started GET "/assets/application.self-922beb0487e4bb1588dcb7d90e53feefa58d51a7992556ef566c0babd0804d23.css?body=1" for ::1 at 2016-06-19 13:59:56 +0700
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for ::1 at 2016-06-19 13:59:56 +0700
+
+
+Started GET "/assets/turbolinks.self-6fb86ff58d930b560704818c7d9e5f60d83d65b91c6778c7f7e4210d5ba82127.js?body=1" for ::1 at 2016-06-19 13:59:56 +0700
+
+
+Started GET "/assets/articles.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-06-19 13:59:56 +0700
+
+
+Started GET "/assets/application.self-f8806224e027f3e3f0138ea9ce99319e298dfdb323304d1f1be6eae8e8c74724.js?body=1" for ::1 at 2016-06-19 13:59:56 +0700
+
+
+Started GET "/articles/1" for ::1 at 2016-06-19 13:59:58 +0700
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mArticle Load (0.0ms)[0m  [1mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.5ms)[0m  BEGIN
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "impressions" ("impressionable_type", "impressionable_id", "controller_name", "action_name", "request_hash", "session_hash", "ip_address", "referrer", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["impressionable_type", "Article"], ["impressionable_id", 1], ["controller_name", "articles"], ["action_name", "show"], ["request_hash", "f1beb38272e64a5c62372dbccdb1a0fafd6575cac3d4d58126fcfc7ce96800a7"], ["session_hash", "7bd076bc18220b1ea7d6c8b4f8165db2"], ["ip_address", "::1"], ["referrer", "http://localhost:3000/articles"], ["created_at", "2016-06-19 06:59:58.930603"], ["updated_at", "2016-06-19 06:59:58.930603"]]
+  [1m[35m (1.0ms)[0m  COMMIT
+  [1m[36m (0.5ms)[0m  [1mSELECT DISTINCT COUNT(DISTINCT "impressions"."request_hash") FROM "impressions" WHERE "impressions"."impressionable_id" = $1 AND "impressions"."impressionable_type" = $2[0m  [["impressionable_id", 1], ["impressionable_type", "Article"]]
+  Rendered articles/show.html.erb within layouts/application (3.5ms)
+Completed 200 OK in 128ms (Views: 119.8ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/articles" for ::1 at 2016-06-19 14:00:02 +0700
+Processing by ArticlesController#index as HTML
+  [1m[35m (0.5ms)[0m  BEGIN
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "impressions" ("impressionable_type", "controller_name", "action_name", "request_hash", "session_hash", "ip_address", "referrer", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["impressionable_type", "Article"], ["controller_name", "articles"], ["action_name", "index"], ["request_hash", "44dddabf66984ac2867246154defe4a6931adf1710138c2d3b44e91ebf7a13e6"], ["session_hash", "7bd076bc18220b1ea7d6c8b4f8165db2"], ["ip_address", "::1"], ["referrer", "http://localhost:3000/articles/1"], ["created_at", "2016-06-19 07:00:02.631688"], ["updated_at", "2016-06-19 07:00:02.631688"]]
+  [1m[35m (1.0ms)[0m  COMMIT
+  [1m[36mArticle Load (0.5ms)[0m  [1mSELECT "articles".* FROM "articles"[0m
+  [1m[35m (0.5ms)[0m  SELECT DISTINCT COUNT(DISTINCT "impressions"."request_hash") FROM "impressions" WHERE "impressions"."impressionable_id" = $1 AND "impressions"."impressionable_type" = $2  [["impressionable_id", 1], ["impressionable_type", "Article"]]
+  [1m[36m (0.5ms)[0m  [1mSELECT DISTINCT COUNT(DISTINCT "impressions"."request_hash") FROM "impressions" WHERE "impressions"."impressionable_id" = $1 AND "impressions"."impressionable_type" = $2[0m  [["impressionable_id", 2], ["impressionable_type", "Article"]]
+  [1m[35m (0.5ms)[0m  SELECT DISTINCT COUNT(DISTINCT "impressions"."request_hash") FROM "impressions" WHERE "impressions"."impressionable_id" = $1 AND "impressions"."impressionable_type" = $2  [["impressionable_id", 3], ["impressionable_type", "Article"]]
+  [1m[36m (0.0ms)[0m  [1mSELECT DISTINCT COUNT(DISTINCT "impressions"."request_hash") FROM "impressions" WHERE "impressions"."impressionable_id" = $1 AND "impressions"."impressionable_type" = $2[0m  [["impressionable_id", 5], ["impressionable_type", "Article"]]
+  [1m[35m (0.0ms)[0m  SELECT DISTINCT COUNT(DISTINCT "impressions"."request_hash") FROM "impressions" WHERE "impressions"."impressionable_id" = $1 AND "impressions"."impressionable_type" = $2  [["impressionable_id", 4], ["impressionable_type", "Article"]]
+  Rendered articles/_article.html.erb (10.2ms)
+  Rendered articles/index.html.erb within layouts/application (34.2ms)
+Completed 200 OK in 153ms (Views: 143.2ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/articles/1" for ::1 at 2016-06-19 14:00:03 +0700
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mArticle Load (0.0ms)[0m  [1mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "impressions" ("impressionable_type", "impressionable_id", "controller_name", "action_name", "request_hash", "session_hash", "ip_address", "referrer", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["impressionable_type", "Article"], ["impressionable_id", 1], ["controller_name", "articles"], ["action_name", "show"], ["request_hash", "70c9c43189816197a7743e220d861454b632da2f1ef5a17ecd9ccf9264ff3d69"], ["session_hash", "7bd076bc18220b1ea7d6c8b4f8165db2"], ["ip_address", "::1"], ["referrer", "http://localhost:3000/articles"], ["created_at", "2016-06-19 07:00:03.970153"], ["updated_at", "2016-06-19 07:00:03.970153"]]
+  [1m[35m (1.0ms)[0m  COMMIT
+  [1m[36m (0.5ms)[0m  [1mSELECT DISTINCT COUNT(DISTINCT "impressions"."request_hash") FROM "impressions" WHERE "impressions"."impressionable_id" = $1 AND "impressions"."impressionable_type" = $2[0m  [["impressionable_id", 1], ["impressionable_type", "Article"]]
+  Rendered articles/show.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 117ms (Views: 107.6ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/articles" for ::1 at 2016-06-19 14:00:05 +0700
+Processing by ArticlesController#index as HTML
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "impressions" ("impressionable_type", "controller_name", "action_name", "request_hash", "session_hash", "ip_address", "referrer", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["impressionable_type", "Article"], ["controller_name", "articles"], ["action_name", "index"], ["request_hash", "709045c0292964fe405d780400b8bdb048e8c5d173d408e7057b7dc7108d213d"], ["session_hash", "7bd076bc18220b1ea7d6c8b4f8165db2"], ["ip_address", "::1"], ["referrer", "http://localhost:3000/articles/1"], ["created_at", "2016-06-19 07:00:05.103462"], ["updated_at", "2016-06-19 07:00:05.103462"]]
+  [1m[35m (1.0ms)[0m  COMMIT
+  [1m[36mArticle Load (0.5ms)[0m  [1mSELECT "articles".* FROM "articles"[0m
+  [1m[35m (0.5ms)[0m  SELECT DISTINCT COUNT(DISTINCT "impressions"."request_hash") FROM "impressions" WHERE "impressions"."impressionable_id" = $1 AND "impressions"."impressionable_type" = $2  [["impressionable_id", 1], ["impressionable_type", "Article"]]
+  [1m[36m (0.0ms)[0m  [1mSELECT DISTINCT COUNT(DISTINCT "impressions"."request_hash") FROM "impressions" WHERE "impressions"."impressionable_id" = $1 AND "impressions"."impressionable_type" = $2[0m  [["impressionable_id", 2], ["impressionable_type", "Article"]]
+  [1m[35m (0.0ms)[0m  SELECT DISTINCT COUNT(DISTINCT "impressions"."request_hash") FROM "impressions" WHERE "impressions"."impressionable_id" = $1 AND "impressions"."impressionable_type" = $2  [["impressionable_id", 3], ["impressionable_type", "Article"]]
+  [1m[36m (0.5ms)[0m  [1mSELECT DISTINCT COUNT(DISTINCT "impressions"."request_hash") FROM "impressions" WHERE "impressions"."impressionable_id" = $1 AND "impressions"."impressionable_type" = $2[0m  [["impressionable_id", 5], ["impressionable_type", "Article"]]
+  [1m[35m (0.5ms)[0m  SELECT DISTINCT COUNT(DISTINCT "impressions"."request_hash") FROM "impressions" WHERE "impressions"."impressionable_id" = $1 AND "impressions"."impressionable_type" = $2  [["impressionable_id", 4], ["impressionable_type", "Article"]]
+  Rendered articles/_article.html.erb (23.5ms)
+  Rendered articles/index.html.erb within layouts/application (52.1ms)
+Completed 200 OK in 228ms (Views: 218.0ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/articles/2" for ::1 at 2016-06-19 14:00:07 +0700
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mArticle Load (0.5ms)[0m  [1mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35m (0.5ms)[0m  BEGIN
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "impressions" ("impressionable_type", "impressionable_id", "controller_name", "action_name", "request_hash", "session_hash", "ip_address", "referrer", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["impressionable_type", "Article"], ["impressionable_id", 2], ["controller_name", "articles"], ["action_name", "show"], ["request_hash", "08222632839bc35f68c8f763613213e203301bcc5e33354798d4ef3ef59d6c05"], ["session_hash", "7bd076bc18220b1ea7d6c8b4f8165db2"], ["ip_address", "::1"], ["referrer", "http://localhost:3000/articles"], ["created_at", "2016-06-19 07:00:07.130004"], ["updated_at", "2016-06-19 07:00:07.130004"]]
+  [1m[35m (1.5ms)[0m  COMMIT
+  [1m[36m (0.0ms)[0m  [1mSELECT DISTINCT COUNT(DISTINCT "impressions"."request_hash") FROM "impressions" WHERE "impressions"."impressionable_id" = $1 AND "impressions"."impressionable_type" = $2[0m  [["impressionable_id", 2], ["impressionable_type", "Article"]]
+  Rendered articles/show.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 108ms (Views: 100.5ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/articles" for ::1 at 2016-06-19 14:00:08 +0700
+Processing by ArticlesController#index as HTML
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "impressions" ("impressionable_type", "controller_name", "action_name", "request_hash", "session_hash", "ip_address", "referrer", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["impressionable_type", "Article"], ["controller_name", "articles"], ["action_name", "index"], ["request_hash", "83ab1e0ea4bc25b522e82b8459431c5981753186e0b2d45d6baee99cb21f65b4"], ["session_hash", "7bd076bc18220b1ea7d6c8b4f8165db2"], ["ip_address", "::1"], ["referrer", "http://localhost:3000/articles/2"], ["created_at", "2016-06-19 07:00:08.393352"], ["updated_at", "2016-06-19 07:00:08.393352"]]
+  [1m[35m (1.0ms)[0m  COMMIT
+  [1m[36mArticle Load (0.0ms)[0m  [1mSELECT "articles".* FROM "articles"[0m
+  [1m[35m (0.5ms)[0m  SELECT DISTINCT COUNT(DISTINCT "impressions"."request_hash") FROM "impressions" WHERE "impressions"."impressionable_id" = $1 AND "impressions"."impressionable_type" = $2  [["impressionable_id", 1], ["impressionable_type", "Article"]]
+  [1m[36m (0.5ms)[0m  [1mSELECT DISTINCT COUNT(DISTINCT "impressions"."request_hash") FROM "impressions" WHERE "impressions"."impressionable_id" = $1 AND "impressions"."impressionable_type" = $2[0m  [["impressionable_id", 2], ["impressionable_type", "Article"]]
+  [1m[35m (0.5ms)[0m  SELECT DISTINCT COUNT(DISTINCT "impressions"."request_hash") FROM "impressions" WHERE "impressions"."impressionable_id" = $1 AND "impressions"."impressionable_type" = $2  [["impressionable_id", 3], ["impressionable_type", "Article"]]
+  [1m[36m (0.0ms)[0m  [1mSELECT DISTINCT COUNT(DISTINCT "impressions"."request_hash") FROM "impressions" WHERE "impressions"."impressionable_id" = $1 AND "impressions"."impressionable_type" = $2[0m  [["impressionable_id", 5], ["impressionable_type", "Article"]]
+  [1m[35m (0.5ms)[0m  SELECT DISTINCT COUNT(DISTINCT "impressions"."request_hash") FROM "impressions" WHERE "impressions"."impressionable_id" = $1 AND "impressions"."impressionable_type" = $2  [["impressionable_id", 4], ["impressionable_type", "Article"]]
+  Rendered articles/_article.html.erb (10.0ms)
+  Rendered articles/index.html.erb within layouts/application (29.5ms)
+Completed 200 OK in 139ms (Views: 130.6ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/articles/1" for ::1 at 2016-06-19 14:00:09 +0700
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mArticle Load (0.0ms)[0m  [1mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.5ms)[0m  BEGIN
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "impressions" ("impressionable_type", "impressionable_id", "controller_name", "action_name", "request_hash", "session_hash", "ip_address", "referrer", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["impressionable_type", "Article"], ["impressionable_id", 1], ["controller_name", "articles"], ["action_name", "show"], ["request_hash", "ed5f1e75003eecf71022f8fc9308933a7b1f2b59aa38f0f1adb4226cef4c96bb"], ["session_hash", "7bd076bc18220b1ea7d6c8b4f8165db2"], ["ip_address", "::1"], ["referrer", "http://localhost:3000/articles"], ["created_at", "2016-06-19 07:00:09.767624"], ["updated_at", "2016-06-19 07:00:09.767624"]]
+  [1m[35m (0.7ms)[0m  COMMIT
+  [1m[36m (0.5ms)[0m  [1mSELECT DISTINCT COUNT(DISTINCT "impressions"."request_hash") FROM "impressions" WHERE "impressions"."impressionable_id" = $1 AND "impressions"."impressionable_type" = $2[0m  [["impressionable_id", 1], ["impressionable_type", "Article"]]
+  Rendered articles/show.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 114ms (Views: 108.2ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/articles" for ::1 at 2016-06-19 14:00:10 +0700
+Processing by ArticlesController#index as HTML
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "impressions" ("impressionable_type", "controller_name", "action_name", "request_hash", "session_hash", "ip_address", "referrer", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["impressionable_type", "Article"], ["controller_name", "articles"], ["action_name", "index"], ["request_hash", "3b90fba42141ed33009f6b0eb6665db187aa99291460f1fbdfee05a8e0ef4d45"], ["session_hash", "7bd076bc18220b1ea7d6c8b4f8165db2"], ["ip_address", "::1"], ["referrer", "http://localhost:3000/articles/1"], ["created_at", "2016-06-19 07:00:10.783787"], ["updated_at", "2016-06-19 07:00:10.783787"]]
+  [1m[35m (1.2ms)[0m  COMMIT
+  [1m[36mArticle Load (0.5ms)[0m  [1mSELECT "articles".* FROM "articles"[0m
+  [1m[35m (0.0ms)[0m  SELECT DISTINCT COUNT(DISTINCT "impressions"."request_hash") FROM "impressions" WHERE "impressions"."impressionable_id" = $1 AND "impressions"."impressionable_type" = $2  [["impressionable_id", 1], ["impressionable_type", "Article"]]
+  [1m[36m (0.0ms)[0m  [1mSELECT DISTINCT COUNT(DISTINCT "impressions"."request_hash") FROM "impressions" WHERE "impressions"."impressionable_id" = $1 AND "impressions"."impressionable_type" = $2[0m  [["impressionable_id", 2], ["impressionable_type", "Article"]]
+  [1m[35m (0.5ms)[0m  SELECT DISTINCT COUNT(DISTINCT "impressions"."request_hash") FROM "impressions" WHERE "impressions"."impressionable_id" = $1 AND "impressions"."impressionable_type" = $2  [["impressionable_id", 3], ["impressionable_type", "Article"]]
+  [1m[36m (0.0ms)[0m  [1mSELECT DISTINCT COUNT(DISTINCT "impressions"."request_hash") FROM "impressions" WHERE "impressions"."impressionable_id" = $1 AND "impressions"."impressionable_type" = $2[0m  [["impressionable_id", 5], ["impressionable_type", "Article"]]
+  [1m[35m (0.5ms)[0m  SELECT DISTINCT COUNT(DISTINCT "impressions"."request_hash") FROM "impressions" WHERE "impressions"."impressionable_id" = $1 AND "impressions"."impressionable_type" = $2  [["impressionable_id", 4], ["impressionable_type", "Article"]]
+  Rendered articles/_article.html.erb (10.0ms)
+  Rendered articles/index.html.erb within layouts/application (29.5ms)
+Completed 200 OK in 138ms (Views: 131.6ms | ActiveRecord: 3.4ms)
+
+
+Started GET "/articles" for ::1 at 2016-06-19 14:02:03 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ArticlesController#index as HTML
+  [1m[35m (0.5ms)[0m  BEGIN
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "impressions" ("impressionable_type", "controller_name", "action_name", "request_hash", "session_hash", "ip_address", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["impressionable_type", "Article"], ["controller_name", "articles"], ["action_name", "index"], ["request_hash", "31b11d3576d1301f38c3a1067e57cf225c14159b8e1b9dea200d4a887ea241f9"], ["session_hash", "7bd076bc18220b1ea7d6c8b4f8165db2"], ["ip_address", "::1"], ["created_at", "2016-06-19 07:02:04.007317"], ["updated_at", "2016-06-19 07:02:04.007317"]]
+  [1m[35m (1.5ms)[0m  COMMIT
+  [1m[36mArticle Load (28.0ms)[0m  [1mSELECT "articles".* FROM "articles"[0m
+  [1m[35m (2.0ms)[0m  SELECT DISTINCT COUNT(DISTINCT "impressions"."request_hash") FROM "impressions" WHERE "impressions"."impressionable_id" = $1 AND "impressions"."impressionable_type" = $2  [["impressionable_id", 1], ["impressionable_type", "Article"]]
+  [1m[36m (0.5ms)[0m  [1mSELECT DISTINCT COUNT(DISTINCT "impressions"."request_hash") FROM "impressions" WHERE "impressions"."impressionable_id" = $1 AND "impressions"."impressionable_type" = $2[0m  [["impressionable_id", 2], ["impressionable_type", "Article"]]
+  [1m[35m (0.5ms)[0m  SELECT DISTINCT COUNT(DISTINCT "impressions"."request_hash") FROM "impressions" WHERE "impressions"."impressionable_id" = $1 AND "impressions"."impressionable_type" = $2  [["impressionable_id", 3], ["impressionable_type", "Article"]]
+  [1m[36m (1.0ms)[0m  [1mSELECT DISTINCT COUNT(DISTINCT "impressions"."request_hash") FROM "impressions" WHERE "impressions"."impressionable_id" = $1 AND "impressions"."impressionable_type" = $2[0m  [["impressionable_id", 5], ["impressionable_type", "Article"]]
+  [1m[35m (0.5ms)[0m  SELECT DISTINCT COUNT(DISTINCT "impressions"."request_hash") FROM "impressions" WHERE "impressions"."impressionable_id" = $1 AND "impressions"."impressionable_type" = $2  [["impressionable_id", 4], ["impressionable_type", "Article"]]
+  Rendered articles/_article.html.erb (46.3ms)
+  Rendered articles/index.html.erb within layouts/application (101.0ms)
+Completed 200 OK in 650ms (Views: 505.8ms | ActiveRecord: 70.8ms)
