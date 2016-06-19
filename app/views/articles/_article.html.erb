@@ -1,0 +1,20 @@
+<div class="row">  
+  <div class="card">
+    <div class="card-block">
+      <h4 class="card-title"><%= link_to article.title, article %></h4>
+      <p class="date">Submitted <%= time_ago_in_words(article.created_at) %> ago</p>
+      <p class="card-text"><%= @markdown.render(article.body).html_safe %></p>          
+    </div>
+    <div class="card-footer">
+      <div class="row">
+        <div class="col-md-6">
+          <%= link_to 'Comment', article %>          
+        </div>
+        <div class="col-md-6" align="right">
+          <%= link_to 'Edit', edit_article_path(article) %> |
+          <%= link_to 'Delete', article, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
