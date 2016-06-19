@@ -21,17 +21,21 @@
 		    </li>
 		    <li class="nav-item">
 		      <a class="nav-link" href="#">Logout</a>
-		    </li>
-		    
+		    </li>		    
 		  </ul>
-		  <form class="form-inline pull-xs-right">
-		    <input class="form-control form-control-sm" type="text" placeholder="Search">
-		    <button class="btn btn-success-outline btn-sm" type="submit">Search</button>
-		  </form>
+
+		  	<div align="right">
+			  	<%= form_tag articles_path, :method => 'get' do %>
+				<%= text_field_tag :search, params[:search] %>
+				<%= submit_tag "Search" %>
+				<% end -%>
+			</div>
+
+		  
 		</nav>
 		
 		<%= yield %>
-		
+
 		<div class="container">
 			<ul class="pager">    			   			
 				<li class="pager-next"><a href="#">GitHub</a></li>
