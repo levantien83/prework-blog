@@ -6,7 +6,7 @@ Submitted by: Le Van Tien
 
 Time spent: 30 hours spent in total
 
-URL: https://prework-blog-vantien.herokuapp.com/articles
+URL: http://vantienblog.herokuapp.com/articles
 
 ## User Stories
 
