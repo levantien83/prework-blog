@@ -9905,3 +9905,21 @@ Started GET "/assets/comments.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dd
 
 
 Started GET "/assets/application.self-f8806224e027f3e3f0138ea9ce99319e298dfdb323304d1f1be6eae8e8c74724.js?body=1" for ::1 at 2016-06-21 02:24:27 +0700
+
+
+Started GET "/articles" for ::1 at 2016-06-21 02:35:08 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (77.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ArticlesController#index as HTML
+  [1m[35m (0.5ms)[0m  BEGIN
+  [1m[36mSQL (97.3ms)[0m  [1mINSERT INTO "impressions" ("impressionable_type", "controller_name", "action_name", "request_hash", "session_hash", "ip_address", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["impressionable_type", "Article"], ["controller_name", "articles"], ["action_name", "index"], ["request_hash", "f6fce110d22978720e21fcde5f8df389b294f880d90979acdb4dd94aa87ea8f7"], ["session_hash", "ad0b047393df3546752939415c2be841"], ["ip_address", "::1"], ["created_at", "2016-06-20 19:35:10.854731"], ["updated_at", "2016-06-20 19:35:10.854731"]]
+  [1m[35m (2.0ms)[0m  COMMIT
+  [1m[36mArticle Load (42.9ms)[0m  [1mSELECT "articles".* FROM "articles"[0m
+  [1m[35m (190.1ms)[0m  SELECT DISTINCT COUNT(DISTINCT "impressions"."request_hash") FROM "impressions" WHERE "impressions"."impressionable_id" = $1 AND "impressions"."impressionable_type" = $2  [["impressionable_id", 3], ["impressionable_type", "Article"]]
+  [1m[36m (14.8ms)[0m  [1mSELECT COUNT(*) FROM "comments" WHERE "comments"."article_id" = $1[0m  [["article_id", 3]]
+  [1m[35m (0.5ms)[0m  SELECT DISTINCT COUNT(DISTINCT "impressions"."request_hash") FROM "impressions" WHERE "impressions"."impressionable_id" = $1 AND "impressions"."impressionable_type" = $2  [["impressionable_id", 2], ["impressionable_type", "Article"]]
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM "comments" WHERE "comments"."article_id" = $1[0m  [["article_id", 2]]
+  [1m[35m (0.5ms)[0m  SELECT DISTINCT COUNT(DISTINCT "impressions"."request_hash") FROM "impressions" WHERE "impressions"."impressionable_id" = $1 AND "impressions"."impressionable_type" = $2  [["impressionable_id", 1], ["impressionable_type", "Article"]]
+  [1m[36m (1.0ms)[0m  [1mSELECT COUNT(*) FROM "comments" WHERE "comments"."article_id" = $1[0m  [["article_id", 1]]
+  Rendered articles/_article.html.erb (473.7ms)
+  Rendered articles/index.html.erb within layouts/application (541.0ms)
+Completed 200 OK in 2551ms (Views: 1817.6ms | ActiveRecord: 508.9ms)

@@ -1,0 +1,19 @@
+<blockquote class="blockquote"> 
+
+  <h5>
+    <%= comment.name %>
+  </h5>  
+
+  <small>
+    <%= @markdown.render(comment.body).html_safe %>      
+  </small>
+
+  <footer class="blockquote-footer">
+    Submitted <%= time_ago_in_words(comment.created_at) %> ago | 
+    <%= link_to 'Delete', [comment.article, comment],
+                method: :delete,
+                data: { confirm: 'Are you sure?' } %>
+  </footer>
+
+</blockquote>
+    
