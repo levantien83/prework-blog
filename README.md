@@ -4,7 +4,7 @@ coderschool_prework_blog_vantien is a Ruby on Rails blog application.
 
 Submitted by: Le Van Tien
 
-Time spent: 30 hours spent in total
+Time spent: 35 hours spent in total
 
 URL: http://vantienblog.herokuapp.com/articles
 
@@ -22,7 +22,7 @@ The following **required** functionality is complete:
 The following **optional** features are implemented:
 * [x] There is a "navbar" that is responsive to window size similar to http://v4-alpha.getbootstrap.com/examples/navbar/. 
 * [x] User can see how many views a post has. 
-* [ ] User can leave a comment on a post.
+* [x] User can leave a comment on a post.
 * [ ] User can add "tags" to a post, and filter posts by tag. 
 
 The following **additional** features are implemented:
