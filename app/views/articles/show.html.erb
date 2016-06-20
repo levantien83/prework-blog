@@ -1,7 +1,24 @@
 
 <div class="container">
   <br>
+  <div align="right">
+    <%= link_to 'Back', articles_path %>
+  </div>
+  
   <%= render @article %>
   <br>
-  <%= link_to 'Back', articles_path %>
+  <div class="card card-block">    
+    <%= render @article.comments %>
+  </div>
+  <br>
+    
+  <div class="col-md-6 col-md-offset-3">
+    <h5>
+      Add a comment:
+    </h5>
+    <%= render "comments/form" %>        
+  </div>
+
+  
+  
 </div>
