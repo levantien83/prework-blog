@@ -18,7 +18,7 @@ class ArticlesController < ApplicationController
 
   def hashtag
     tag = Tag.find_by(name: params[:name])
-    @articles = tag.articles
+    @articles = tag.articles.order("created_at DESC")
     @markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML)
   end
 
