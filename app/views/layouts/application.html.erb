@@ -24,17 +24,18 @@
 					<a class="nav-item nav-link" href="#" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Login');">Login</a>
 					<a class="nav-item nav-link" href="#" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Logout');">Logout</a>
 
+				
+					<div class="nav navbar-nav" align="right">
+						<form class="form-inline">
+							<div class="form-group">				  	
+							  	<%= form_tag articles_path, :method => 'get' do %>
+								<%= text_field_tag :search, params[:search], class: 'form-control form-control-sm' %>
+								<%= submit_tag "Search", class: 'btn btn-primary btn-sm' %>
+								<% end %>
+							</div>
+						</form>
+					</div>
 				</nav>
-				<div align="right">
-					<form class="form-inline">
-						<div class="form-group">				  	
-						  	<%= form_tag articles_path, :method => 'get' do %>
-							<%= text_field_tag :search, params[:search], class: 'form-control form-control-sm' %>
-							<%= submit_tag "Search", class: 'btn btn-primary btn-sm' %>
-							<% end %>
-						</div>
-					</form>
-				</div>
 			</div>
 		</header>
 		
