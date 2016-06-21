@@ -6,7 +6,7 @@ class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.json
   def index
-    @articles = Article.search(params[:search]).reverse
+    @articles = Article.search(params[:search]).order("created_at DESC")
     @markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML)
   end
 
