@@ -14148,3 +14148,200 @@ Processing by ArticlesController#hashtag as HTML
   Rendered articles/_article.html.erb (16.3ms)
   Rendered articles/hashtag.html.erb within layouts/application (42.8ms)
 Completed 200 OK in 191ms (Views: 168.6ms | ActiveRecord: 6.0ms)
+
+
+Started GET "/articles/4/edit" for ::1 at 2016-06-22 02:04:32 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (24.8ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ArticlesController#edit as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mArticle Load (1.0ms)[0m  SELECT  "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT 1  [["id", 4]]
+  [1m[36m (0.5ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "impressions" ("impressionable_type", "impressionable_id", "controller_name", "action_name", "request_hash", "session_hash", "ip_address", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"  [["impressionable_type", "Article"], ["impressionable_id", 4], ["controller_name", "articles"], ["action_name", "edit"], ["request_hash", "846353ca9f06c3851508d00e9c9d992a8a240d799a40f27e318d2946c04de58e"], ["session_hash", "150ccb47394d313a675f2a23e3c8c5d6"], ["ip_address", "::1"], ["created_at", "2016-06-21 19:04:33.947989"], ["updated_at", "2016-06-21 19:04:33.947989"]]
+  [1m[36m (28.7ms)[0m  [1mCOMMIT[0m
+  Rendered articles/_form.html.erb (202.8ms)
+  Rendered articles/edit.html.erb within layouts/application (263.0ms)
+Completed 200 OK in 1185ms (Views: 854.5ms | ActiveRecord: 121.7ms)
+
+
+Started GET "/assets/application.self-922beb0487e4bb1588dcb7d90e53feefa58d51a7992556ef566c0babd0804d23.css?body=1" for ::1 at 2016-06-22 02:04:34 +0700
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for ::1 at 2016-06-22 02:04:34 +0700
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for ::1 at 2016-06-22 02:04:34 +0700
+
+
+Started GET "/assets/bootstrap.self-e7dfe29e9f594eb85eead62e3ed95df169b0fc3d21fe0468a812e399c9fcc604.js?body=1" for ::1 at 2016-06-22 02:04:34 +0700
+
+
+Started GET "/assets/turbolinks.self-6fb86ff58d930b560704818c7d9e5f60d83d65b91c6778c7f7e4210d5ba82127.js?body=1" for ::1 at 2016-06-22 02:04:35 +0700
+
+
+Started GET "/assets/articles.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-06-22 02:04:35 +0700
+
+
+Started GET "/assets/comments.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-06-22 02:04:35 +0700
+
+
+Started GET "/assets/application.self-f8806224e027f3e3f0138ea9ce99319e298dfdb323304d1f1be6eae8e8c74724.js?body=1" for ::1 at 2016-06-22 02:04:35 +0700
+
+
+Started PATCH "/articles/4" for ::1 at 2016-06-22 02:04:41 +0700
+Processing by ArticlesController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"7qA0/BN+NJAdI4zw2x4pCuBdWeAwLzh/JBkl68u9QZ0QtY4b1VhIkS+wquBDG7p1mKD2jWDqLJKfvt0Hr/j58Q==", "article"=>{"title"=>"1st post", "body"=>"Test's body #test"}, "commit"=>"Update Article", "id"=>"4"}
+  [1m[35mArticle Load (0.5ms)[0m  SELECT  "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT 1  [["id", 4]]
+  [1m[36m (1.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "impressions" ("impressionable_type", "impressionable_id", "controller_name", "action_name", "request_hash", "session_hash", "ip_address", "referrer", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"  [["impressionable_type", "Article"], ["impressionable_id", 4], ["controller_name", "articles"], ["action_name", "update"], ["request_hash", "7bb0721b233dda1b8c52afd10e23be8d8ffd59017db2208dacd0f1bcf18fa792"], ["session_hash", "150ccb47394d313a675f2a23e3c8c5d6"], ["ip_address", "::1"], ["referrer", "http://localhost:3000/articles/4/edit"], ["created_at", "2016-06-21 19:04:41.905015"], ["updated_at", "2016-06-21 19:04:41.905015"]]
+  [1m[36m (12.0ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36mSQL (0.5ms)[0m  [1mUPDATE "articles" SET "body" = $1, "updated_at" = $2 WHERE "articles"."id" = $3[0m  [["body", "Test's body #test"], ["updated_at", "2016-06-21 19:04:41.923527"], ["id", 4]]
+  [1m[35mTag Load (22.3ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "articles_tags" ON "tags"."id" = "articles_tags"."tag_id" WHERE "articles_tags"."article_id" = $1  [["article_id", 4]]
+  [1m[36mSQL (1.0ms)[0m  [1mDELETE FROM "articles_tags" WHERE "articles_tags"."article_id" = $1 AND "articles_tags"."tag_id" = 1[0m  [["article_id", 4]]
+  [1m[35mTag Load (3.6ms)[0m  SELECT  "tags".* FROM "tags" WHERE "tags"."name" = $1 LIMIT 1  [["name", "test"]]
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "articles_tags" ("article_id", "tag_id") VALUES ($1, $2)[0m  [["article_id", 4], ["tag_id", 1]]
+  [1m[35m (0.8ms)[0m  COMMIT
+Redirected to http://localhost:3000/articles/4
+Completed 302 Found in 383ms (ActiveRecord: 48.2ms)
+
+
+Started GET "/articles/4" for ::1 at 2016-06-22 02:04:42 +0700
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mArticle Load (0.5ms)[0m  [1mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  [1m[35m (0.5ms)[0m  BEGIN
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "impressions" ("impressionable_type", "impressionable_id", "controller_name", "action_name", "request_hash", "session_hash", "ip_address", "referrer", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["impressionable_type", "Article"], ["impressionable_id", 4], ["controller_name", "articles"], ["action_name", "show"], ["request_hash", "08d3c091aab1667b9fd3939e9d71efd00e46343f0ebd3347c04221e04ee5bda8"], ["session_hash", "150ccb47394d313a675f2a23e3c8c5d6"], ["ip_address", "::1"], ["referrer", "http://localhost:3000/articles/4/edit"], ["created_at", "2016-06-21 19:04:42.313026"], ["updated_at", "2016-06-21 19:04:42.313026"]]
+  [1m[35m (2.0ms)[0m  COMMIT
+  [1m[36m (1.5ms)[0m  [1mSELECT DISTINCT COUNT(DISTINCT "impressions"."request_hash") FROM "impressions" WHERE "impressions"."impressionable_id" = $1 AND "impressions"."impressionable_type" = $2[0m  [["impressionable_id", 4], ["impressionable_type", "Article"]]
+  [1m[35m (26.5ms)[0m  SELECT COUNT(*) FROM "comments" WHERE "comments"."article_id" = $1  [["article_id", 4]]
+  Rendered articles/_article.html.erb (47.6ms)
+  [1m[36mComment Load (0.2ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."article_id" = $1[0m  [["article_id", 4]]
+  Rendered collection (0.0ms)
+  Rendered comments/_form.html.erb (37.6ms)
+  Rendered articles/show.html.erb within layouts/application (118.7ms)
+Completed 200 OK in 269ms (Views: 221.1ms | ActiveRecord: 33.7ms)
+
+
+Started GET "/articles/4" for ::1 at 2016-06-22 02:05:18 +0700
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mArticle Load (0.5ms)[0m  SELECT  "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT 1  [["id", 4]]
+  [1m[36m (0.5ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "impressions" ("impressionable_type", "impressionable_id", "controller_name", "action_name", "request_hash", "session_hash", "ip_address", "referrer", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"  [["impressionable_type", "Article"], ["impressionable_id", 4], ["controller_name", "articles"], ["action_name", "show"], ["request_hash", "cd727eb9e852edf85aa65875cc0156bcc7e312fa20d3bb7d4871c82273822c3e"], ["session_hash", "150ccb47394d313a675f2a23e3c8c5d6"], ["ip_address", "::1"], ["referrer", "http://localhost:3000/articles/4/edit"], ["created_at", "2016-06-21 19:05:18.848022"], ["updated_at", "2016-06-21 19:05:18.848022"]]
+  [1m[36m (1.0ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.5ms)[0m  SELECT DISTINCT COUNT(DISTINCT "impressions"."request_hash") FROM "impressions" WHERE "impressions"."impressionable_id" = $1 AND "impressions"."impressionable_type" = $2  [["impressionable_id", 4], ["impressionable_type", "Article"]]
+  [1m[36m (0.0ms)[0m  [1mSELECT COUNT(*) FROM "comments" WHERE "comments"."article_id" = $1[0m  [["article_id", 4]]
+  Rendered articles/_article.html.erb (7.5ms)
+  [1m[35mComment Load (0.5ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."article_id" = $1  [["article_id", 4]]
+  Rendered collection (0.0ms)
+  Rendered comments/_form.html.erb (2.5ms)
+  Rendered articles/show.html.erb within layouts/application (41.0ms)
+Completed 200 OK in 178ms (Views: 164.7ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/assets/application.self-922beb0487e4bb1588dcb7d90e53feefa58d51a7992556ef566c0babd0804d23.css?body=1" for ::1 at 2016-06-22 02:05:19 +0700
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for ::1 at 2016-06-22 02:05:19 +0700
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for ::1 at 2016-06-22 02:05:19 +0700
+
+
+Started GET "/assets/bootstrap.self-e7dfe29e9f594eb85eead62e3ed95df169b0fc3d21fe0468a812e399c9fcc604.js?body=1" for ::1 at 2016-06-22 02:05:19 +0700
+
+
+Started GET "/assets/comments.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-06-22 02:05:19 +0700
+
+
+Started GET "/assets/turbolinks.self-6fb86ff58d930b560704818c7d9e5f60d83d65b91c6778c7f7e4210d5ba82127.js?body=1" for ::1 at 2016-06-22 02:05:19 +0700
+
+
+Started GET "/assets/articles.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-06-22 02:05:19 +0700
+
+
+Started GET "/assets/application.self-f8806224e027f3e3f0138ea9ce99319e298dfdb323304d1f1be6eae8e8c74724.js?body=1" for ::1 at 2016-06-22 02:05:19 +0700
+
+
+Started GET "/articles/hashtag/test" for ::1 at 2016-06-22 02:05:28 +0700
+Processing by ArticlesController#hashtag as HTML
+  Parameters: {"name"=>"test"}
+  [1m[36m (0.5ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "impressions" ("impressionable_type", "controller_name", "action_name", "request_hash", "session_hash", "ip_address", "referrer", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"  [["impressionable_type", "Article"], ["controller_name", "articles"], ["action_name", "hashtag"], ["request_hash", "641d79027ec938486a9beb5f8d2c516567c1c7f20a41ee86388bf5f87a3a7928"], ["session_hash", "150ccb47394d313a675f2a23e3c8c5d6"], ["ip_address", "::1"], ["referrer", "http://localhost:3000/articles/4"], ["created_at", "2016-06-21 19:05:28.375848"], ["updated_at", "2016-06-21 19:05:28.375848"]]
+  [1m[36m (1.0ms)[0m  [1mCOMMIT[0m
+  [1m[35mTag Load (0.5ms)[0m  SELECT  "tags".* FROM "tags" WHERE "tags"."name" = $1 LIMIT 1  [["name", "test"]]
+  [1m[36mArticle Load (0.5ms)[0m  [1mSELECT "articles".* FROM "articles" INNER JOIN "articles_tags" ON "articles"."id" = "articles_tags"."article_id" WHERE "articles_tags"."tag_id" = $1[0m  [["tag_id", 1]]
+  [1m[35m (0.5ms)[0m  SELECT DISTINCT COUNT(DISTINCT "impressions"."request_hash") FROM "impressions" WHERE "impressions"."impressionable_id" = $1 AND "impressions"."impressionable_type" = $2  [["impressionable_id", 5], ["impressionable_type", "Article"]]
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM "comments" WHERE "comments"."article_id" = $1[0m  [["article_id", 5]]
+  [1m[35m (0.5ms)[0m  SELECT DISTINCT COUNT(DISTINCT "impressions"."request_hash") FROM "impressions" WHERE "impressions"."impressionable_id" = $1 AND "impressions"."impressionable_type" = $2  [["impressionable_id", 6], ["impressionable_type", "Article"]]
+  [1m[36m (0.0ms)[0m  [1mSELECT COUNT(*) FROM "comments" WHERE "comments"."article_id" = $1[0m  [["article_id", 6]]
+  [1m[35m (3.0ms)[0m  SELECT DISTINCT COUNT(DISTINCT "impressions"."request_hash") FROM "impressions" WHERE "impressions"."impressionable_id" = $1 AND "impressions"."impressionable_type" = $2  [["impressionable_id", 4], ["impressionable_type", "Article"]]
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM "comments" WHERE "comments"."article_id" = $1[0m  [["article_id", 4]]
+  Rendered articles/_article.html.erb (19.7ms)
+  Rendered articles/hashtag.html.erb within layouts/application (45.2ms)
+Completed 200 OK in 185ms (Views: 155.5ms | ActiveRecord: 8.0ms)
+
+
+Started GET "/articles/5/edit" for ::1 at 2016-06-22 02:05:33 +0700
+Processing by ArticlesController#edit as HTML
+  Parameters: {"id"=>"5"}
+  [1m[35mArticle Load (1.0ms)[0m  SELECT  "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36m (0.5ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "impressions" ("impressionable_type", "impressionable_id", "controller_name", "action_name", "request_hash", "session_hash", "ip_address", "referrer", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"  [["impressionable_type", "Article"], ["impressionable_id", 5], ["controller_name", "articles"], ["action_name", "edit"], ["request_hash", "a4197f66e60840c7355b34a84e103b818b7dd52ce65fb42e680383fc6356721e"], ["session_hash", "150ccb47394d313a675f2a23e3c8c5d6"], ["ip_address", "::1"], ["referrer", "http://localhost:3000/articles/hashtag/test"], ["created_at", "2016-06-21 19:05:33.835476"], ["updated_at", "2016-06-21 19:05:33.835476"]]
+  [1m[36m (11.5ms)[0m  [1mCOMMIT[0m
+  Rendered articles/_form.html.erb (3.1ms)
+  Rendered articles/edit.html.erb within layouts/application (25.6ms)
+Completed 200 OK in 165ms (Views: 141.2ms | ActiveRecord: 13.5ms)
+
+
+Started PATCH "/articles/5" for ::1 at 2016-06-22 02:05:35 +0700
+Processing by ArticlesController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"5dF3T91rx00fbj1Ct2PNgiwH1o9VvCg68AGklxGhsB0bxM2oG027TC39G1IvZl79VPp54gV5PNdLplx7deQIcQ==", "article"=>{"title"=>"2nd post", "body"=>"body #TEst #tesT "}, "commit"=>"Update Article", "id"=>"5"}
+  [1m[35mArticle Load (1.5ms)[0m  SELECT  "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "impressions" ("impressionable_type", "impressionable_id", "controller_name", "action_name", "request_hash", "session_hash", "ip_address", "referrer", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"  [["impressionable_type", "Article"], ["impressionable_id", 5], ["controller_name", "articles"], ["action_name", "update"], ["request_hash", "d4f0307f5e46aab3654ea170767d92cfa0cfa664a2a1738a3308805554e00f46"], ["session_hash", "150ccb47394d313a675f2a23e3c8c5d6"], ["ip_address", "::1"], ["referrer", "http://localhost:3000/articles/5/edit"], ["created_at", "2016-06-21 19:05:35.174716"], ["updated_at", "2016-06-21 19:05:35.174716"]]
+  [1m[36m (34.2ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36mTag Load (0.5ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "articles_tags" ON "tags"."id" = "articles_tags"."tag_id" WHERE "articles_tags"."article_id" = $1[0m  [["article_id", 5]]
+  [1m[35mSQL (0.0ms)[0m  DELETE FROM "articles_tags" WHERE "articles_tags"."article_id" = $1 AND "articles_tags"."tag_id" = 1  [["article_id", 5]]
+  [1m[36mTag Load (0.0ms)[0m  [1mSELECT  "tags".* FROM "tags" WHERE "tags"."name" = $1 LIMIT 1[0m  [["name", "test"]]
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "articles_tags" ("article_id", "tag_id") VALUES ($1, $2)  [["article_id", 5], ["tag_id", 1]]
+  [1m[36m (18.0ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/articles/5
+Completed 302 Found in 80ms (ActiveRecord: 56.3ms)
+
+
+Started GET "/articles/5" for ::1 at 2016-06-22 02:05:35 +0700
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[35mArticle Load (0.0ms)[0m  SELECT  "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36m (0.5ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "impressions" ("impressionable_type", "impressionable_id", "controller_name", "action_name", "request_hash", "session_hash", "ip_address", "referrer", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"  [["impressionable_type", "Article"], ["impressionable_id", 5], ["controller_name", "articles"], ["action_name", "show"], ["request_hash", "7050ddeab793e3af1f25d60a31064b31060353996924c2fe869a6a68fccfea00"], ["session_hash", "150ccb47394d313a675f2a23e3c8c5d6"], ["ip_address", "::1"], ["referrer", "http://localhost:3000/articles/5/edit"], ["created_at", "2016-06-21 19:05:35.277433"], ["updated_at", "2016-06-21 19:05:35.277433"]]
+  [1m[36m (3.0ms)[0m  [1mCOMMIT[0m
+  [1m[35m (1.0ms)[0m  SELECT DISTINCT COUNT(DISTINCT "impressions"."request_hash") FROM "impressions" WHERE "impressions"."impressionable_id" = $1 AND "impressions"."impressionable_type" = $2  [["impressionable_id", 5], ["impressionable_type", "Article"]]
+  [1m[36m (0.0ms)[0m  [1mSELECT COUNT(*) FROM "comments" WHERE "comments"."article_id" = $1[0m  [["article_id", 5]]
+  Rendered articles/_article.html.erb (5.5ms)
+  [1m[35mComment Load (0.0ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."article_id" = $1  [["article_id", 5]]
+  Rendered collection (0.0ms)
+  Rendered comments/_form.html.erb (2.5ms)
+  Rendered articles/show.html.erb within layouts/application (38.3ms)
+Completed 200 OK in 171ms (Views: 157.3ms | ActiveRecord: 5.0ms)
+
+
+Started GET "/articles/hashtag/test" for ::1 at 2016-06-22 02:05:36 +0700
+Processing by ArticlesController#hashtag as HTML
+  Parameters: {"name"=>"test"}
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "impressions" ("impressionable_type", "controller_name", "action_name", "request_hash", "session_hash", "ip_address", "referrer", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"  [["impressionable_type", "Article"], ["controller_name", "articles"], ["action_name", "hashtag"], ["request_hash", "a87a677549d227741e95891767a796b6cf6ede4a8365a367a81d461244075511"], ["session_hash", "150ccb47394d313a675f2a23e3c8c5d6"], ["ip_address", "::1"], ["referrer", "http://localhost:3000/articles/5"], ["created_at", "2016-06-21 19:05:36.663240"], ["updated_at", "2016-06-21 19:05:36.663240"]]
+  [1m[36m (2.5ms)[0m  [1mCOMMIT[0m
+  [1m[35mTag Load (0.5ms)[0m  SELECT  "tags".* FROM "tags" WHERE "tags"."name" = $1 LIMIT 1  [["name", "test"]]
+  [1m[36mArticle Load (0.0ms)[0m  [1mSELECT "articles".* FROM "articles" INNER JOIN "articles_tags" ON "articles"."id" = "articles_tags"."article_id" WHERE "articles_tags"."tag_id" = $1[0m  [["tag_id", 1]]
+  [1m[35m (0.5ms)[0m  SELECT DISTINCT COUNT(DISTINCT "impressions"."request_hash") FROM "impressions" WHERE "impressions"."impressionable_id" = $1 AND "impressions"."impressionable_type" = $2  [["impressionable_id", 5], ["impressionable_type", "Article"]]
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM "comments" WHERE "comments"."article_id" = $1[0m  [["article_id", 5]]
+  [1m[35m (0.0ms)[0m  SELECT DISTINCT COUNT(DISTINCT "impressions"."request_hash") FROM "impressions" WHERE "impressions"."impressionable_id" = $1 AND "impressions"."impressionable_type" = $2  [["impressionable_id", 6], ["impressionable_type", "Article"]]
+  [1m[36m (0.0ms)[0m  [1mSELECT COUNT(*) FROM "comments" WHERE "comments"."article_id" = $1[0m  [["article_id", 6]]
+  [1m[35m (0.0ms)[0m  SELECT DISTINCT COUNT(DISTINCT "impressions"."request_hash") FROM "impressions" WHERE "impressions"."impressionable_id" = $1 AND "impressions"."impressionable_type" = $2  [["impressionable_id", 4], ["impressionable_type", "Article"]]
+  [1m[36m (0.0ms)[0m  [1mSELECT COUNT(*) FROM "comments" WHERE "comments"."article_id" = $1[0m  [["article_id", 4]]
+  Rendered articles/_article.html.erb (16.0ms)
+  Rendered articles/hashtag.html.erb within layouts/application (41.0ms)
+Completed 200 OK in 170ms (Views: 155.7ms | ActiveRecord: 4.0ms)
