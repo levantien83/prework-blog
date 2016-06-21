@@ -6,7 +6,7 @@ Submitted by: Le Van Tien
 
 Time spent: 39 hours spent in total
 
-URL: http://vantienblog.herokuapp.com/articles
+URL: http://vantienblog.herokuapp.com
 
 ## User Stories
 
