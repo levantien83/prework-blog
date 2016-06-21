@@ -16,6 +16,12 @@ class ArticlesController < ApplicationController
     @markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML)
   end
 
+  def hashtag
+    tag = Tag.find_by(name: params[:name])
+    @articles = tag.articles
+    @markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML)
+  end
+
   # GET /articles/new
   def new
     @article = Article.new
