@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     resources :comments
   end
 
-  root 'articles#index'
+  root :to => 'articles#index'
   get '/articles/hashtag/:name', to: 'articles#hashtag'
 
   # The priority is based upon order of creation: first created -> highest priority.
