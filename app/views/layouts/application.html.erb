@@ -20,9 +20,50 @@
 				<nav class="nav navbar-nav">
 					<a class="navbar-brand" href="/" onclick="ga('send', 'event', 'Navbar', 'Community links', '/');">Valentine's blog</a>
 					<a class="nav-item nav-link active" href="/" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Home');">Home</a>
-					<a class="nav-item nav-link " href="#" onclick="ga('send', 'event', 'Navbar', 'Community links', 'About');">About</a>					
-					<a class="nav-item nav-link" href="#" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Login');">Login</a>
-					<a class="nav-item nav-link" href="#" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Logout');">Logout</a>
+					<a class="nav-item nav-link " href="#" onclick="ga('send', 'event', 'Navbar', 'Community links', 'About');">About</a>
+					<% if user_signed_in? %>						
+						<div class="nav-item btn-group">
+						  <button class="btn btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						    <%= current_user.email %>
+						  </button>
+						  <div class="dropdown-menu">
+						  	<%= link_to("User's articles", 
+										"/articles/user/#{current_user.id}", 								
+										class: 'dropdown-item'
+										) %>
+
+						    <div class="dropdown-divider"></div>
+
+						    <%= link_to('Change password', 
+										edit_user_registration_path, 								
+										class: 'dropdown-item'
+										) %>
+							<%= link_to('Sign out', 
+										destroy_user_session_path, 
+										:method => :delete,
+										class: 'dropdown-item'
+										) %>
+						  </div>
+						</div>
+												
+					<% else %>						
+						<div class="nav-item btn-group">
+						  <button class="btn btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						    Not signed in
+						  </button>
+						  <div class="dropdown-menu">
+							<%= link_to('Sign up', 
+											new_user_registration_path,								
+											class: 'dropdown-item'
+											) %>
+							<%= link_to('Sign in', 
+											user_session_path,										
+											class: 'dropdown-item'
+											) %>
+						  </div>
+						</div>						
+					<% end -%>
+					
 
 				
 					<div class="nav navbar-nav" align="right">
@@ -38,6 +79,8 @@
 				</nav>
 			</div>
 		</header>
+		<p class="notice"><%= notice %></p>
+		<p class="alert"><%= alert %></p>
 		
 			
 		<%= yield %>

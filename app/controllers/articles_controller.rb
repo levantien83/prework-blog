@@ -1,6 +1,7 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :article_owner, only: [:edit, :update, :destroy]
 
   impressionist
   # GET /articles
@@ -22,9 +23,22 @@ class ArticlesController < ApplicationController
     @markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML)
   end
 
+  def user
+    user = User.find(params[:user_id])
+    @articles = user.articles.order("created_at DESC")
+    @markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML)
+  end
+
+  def article_owner
+    unless (current_user.email ==  @article.user.email) || (current_user.email == "levantien83@gmail.com")
+      flash[:notice] = 'Access denied as you are not owner of this Job'
+      redirect_to articles_url
+    end
+  end
+
   # GET /articles/new
   def new
-    @article = Article.new
+    @article = current_user.articles.build
   end
 
   # GET /articles/1/edit
@@ -34,7 +48,7 @@ class ArticlesController < ApplicationController
   # POST /articles
   # POST /articles.json
   def create
-    @article = Article.new(article_params)
+    @article = current_user.articles.build(article_params)
 
     respond_to do |format|
       if @article.save
