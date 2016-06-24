@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show, :hashtag, :user]
   before_action :article_owner, only: [:edit, :update, :destroy]
 
   impressionist
@@ -31,7 +31,7 @@ class ArticlesController < ApplicationController
 
   def article_owner
     unless (current_user.email ==  @article.user.email) || (current_user.email == "levantien83@gmail.com")
-      flash[:notice] = 'Access denied as you are not owner of this Job'
+      flash[:notice] = 'Access denied as you are not owner of this Article'
       redirect_to articles_url
     end
   end
