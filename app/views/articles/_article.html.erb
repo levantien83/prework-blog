@@ -6,7 +6,7 @@
         Submitted <%= time_ago_in_words(article.created_at) %> ago by <%= link_to article.user.email,"/articles/user/#{article.user.id}" %> | 
         <%= article.impressionist_count %> views 
       </p>
-      <p class="card-text"><%= @markdown.render(render_with_hashtags(article.body)).html_safe %></p>          
+      <p class="text-justify"><%= @markdown.render(render_with_hashtags(article.body)).html_safe %></p>          
     </div>
     <div class="card-footer">
       <div class="row">

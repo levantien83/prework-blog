@@ -1,0 +1,32 @@
+<br><br><br>
+
+	<div align="right">
+		<h3>Website</h3>
+		<%= link_to( 'Home', "/", class: 'dropdown-item' ) %>
+		<%= link_to( 'About', "#", class: 'dropdown-item' ) %>	
+		
+		<div class="dropdown-divider"></div>
+		<h3>Social</h3>
+		<%= link_to( 'Twitter', "#", class: 'dropdown-item' ) %>
+		<%= link_to( 'Facebook', "#", class: 'dropdown-item' ) %>
+		<%= link_to( 'Github', "#", class: 'dropdown-item' ) %>
+		<%= link_to( 'Email', "#", class: 'dropdown-item' ) %>
+
+		<div class="dropdown-divider"></div>
+		<h3>Hashtag</h3>
+		<% @all_tags = Tag.all %>
+		<% @all_tags.each do |t| %>
+			<% if t.articles.count == 0 %>
+			<% else %>
+				<%= link_to "#{t.name} (#{t.articles.count})", "/articles/hashtag/#{t.name}" %>
+			<% end -%>
+		<% end -%>
+		
+		<div class="dropdown-divider"></div>
+		<h3>Last articles</h3>
+		<% @last_articles = Article.order("created_at DESC").limit(5) %>
+		<% @last_articles.each do |a| %>
+			<%= link_to a.title, article_path(a) %>
+			<br>
+		<% end -%>
+	</div>

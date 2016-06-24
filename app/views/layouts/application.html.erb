@@ -7,92 +7,23 @@
 	  <%= csrf_meta_tags %>
 	</head>
 	<body>
-		<header class="navbar navbar-dark navbar-static-top bd-navbar bg-inverse" role="banner"> 
-			<div class="clearfix">
-				<button class="navbar-toggler pull-xs-right hidden-sm-up collapsed" type="button" data-toggle="collapse" data-target="#bd-main-nav" aria-expanded="false">
-					☰
-				</button>
-				<a class="navbar-brand hidden-sm-up" href="/">
-					Valentine's blog
-				</a>
-			</div>
-			<div class="navbar-toggleable-xs collapse" id="bd-main-nav" aria-expanded="false" style="height: 0px;">
-				<nav class="nav navbar-nav">
-					<a class="navbar-brand" href="/" onclick="ga('send', 'event', 'Navbar', 'Community links', '/');">Valentine's blog</a>
-					<a class="nav-item nav-link active" href="/" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Home');">Home</a>
-					<a class="nav-item nav-link " href="#" onclick="ga('send', 'event', 'Navbar', 'Community links', 'About');">About</a>
-
-					<div class="nav navbar-nav" align="right">
-						<form class="form-inline">
-							<% if user_signed_in? %>						
-								<div class="form-group btn-group">
-								  <button class="btn btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								    <%= current_user.email %>
-								  </button>
-								  <div class="dropdown-menu">
-								  	<%= link_to("User's articles", 
-												"/articles/user/#{current_user.id}", 								
-												class: 'dropdown-item'
-												) %>
-
-								    <div class="dropdown-divider"></div>
-
-								    <%= link_to('Change password', 
-												edit_user_registration_path, 								
-												class: 'dropdown-item'
-												) %>
-									<%= link_to('Sign out', 
-												destroy_user_session_path, 
-												:method => :delete,
-												class: 'dropdown-item'
-												) %>
-								  </div>
-								</div>
-														
-							<% else %>						
-								<div class="form-group btn-group">
-								  <button class="btn btn-info btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								    Not signed in
-								  </button>
-								  <div class="dropdown-menu">
-									<%= link_to('Sign up', 
-													new_user_registration_path,	
-													class: 'dropdown-item'
-													) %>
-									<%= link_to('Sign in', 
-													user_session_path,				
-													class: 'dropdown-item'
-													) %>
-								  </div>
-								</div>						
-							<% end -%>
-
-							<div class="form-group">				  	
-							  	<%= form_tag articles_path, :method => 'get' do %>
-								<%= text_field_tag :search, params[:search], class: 'form-control form-control-sm' %>
-								<%= submit_tag "Search", class: 'btn btn-info-outline btn-sm' %>
-								<% end %>
-							</div>							
-
-						</form>
-
-					</div>
-
-				</nav>
-			</div>
-		</header>
-		<p class="notice"><%= notice %></p>
-		<p class="alert"><%= alert %></p>
 		
-		<%= yield %>
+		<%= render "header" %>
 
-		<div class="container">
-			<ul class="pager">    			   			
-				<li class="pager-next"><a href="#">GitHub</a></li>
-				<li class="pager-next"><a href="#">Twitter</a></li>    			
-				<li class="pager-next"><a href="#">Facebook</a></li>
-				<li class="pager-next"><a href="#">About</a></li>     			
-	  		</ul>
-		</div>
+		<div class="row">
+			<div class="col-md-3">
+				<div class="container">
+					<%= render "sidebar" %>
+				</div>
+			</div>
+			<div class="col-md-8">
+				<p class="notice"><%= notice %></p>
+				<p class="alert"><%= alert %></p>
+				<%= yield %>
+			</div>			
+		</div>		
+
+		<%= render "footer" %>
+		
 	</body>
 </html>
