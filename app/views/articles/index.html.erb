@@ -1,11 +1,4 @@
 
-<div class="container">
-
-	<% if user_signed_in? %>
-		<%= link_to 'New Article', new_article_path, class: 'btn btn-primary-outline btn-sm' %>	
-	<% end -%>
-	
-	<br><br>
-	<%= render @articles %>
-  
+<div class="container">	
+	<%= render @articles %>  
 </div>

@@ -27,9 +27,9 @@ The following **optional** features are implemented:
 
 The following **additional** features are implemented:
 
-- [x] Hashtag
-- [x] Authentications
-- [x] Re-layout with header, footer and side-bar
+- [x] Hashtag.
+- [x] Authentications, users can edit, remove their own posts only. Guests can comment.
+- [x] Re-layout with header, footer and side-bar.
 
 ## Video Walkthrough 
 
