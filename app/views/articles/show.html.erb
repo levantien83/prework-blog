@@ -1,10 +1,5 @@
 
 <div class="container">
-  <br>
-  <div align="right">
-    <%= link_to 'Back', articles_path %>
-  </div>
-  
   <%= render @article %>
   <br>
   <% if @article.comments.count > 0 %>
@@ -20,7 +15,4 @@
     </h5>
     <%= render "comments/form" %>        
   </div>
-
-  
-  
 </div>
