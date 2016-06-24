@@ -1,7 +1,7 @@
 <div class="row">  
   <div class="card">
     <div class="card-block">
-      <h4 class="card-title"><%= link_to article.title, article %></h4>
+      <h4 class="card-title"><%= article.title %></h4>
       <p class="blockquote-footer">
         Submitted <%= time_ago_in_words(article.created_at) %> ago by <%= link_to article.user.email,"/articles/user/#{article.user.id}" %> | 
         <%= article.impressionist_count %> views 
@@ -11,7 +11,7 @@
     <div class="card-footer">
       <div class="row">
         <div class="col-md-6">
-          <%= article.comments.count %> comments
+          <%= link_to "#{article.comments.count} comments", article %>
         </div>
         <% if user_signed_in? && (current_user == article.user || current_user.email == "levantien83@gmail.com") %>
           <div class="col-md-6" align="right">

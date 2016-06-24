@@ -4,7 +4,7 @@ coderschool_prework_blog_vantien is a Ruby on Rails blog application.
 
 Submitted by: Le Van Tien
 
-Time spent: 39 hours spent in total
+Time spent: 43 hours spent in total
 
 URL: http://vantienblog.herokuapp.com
 
@@ -28,6 +28,8 @@ The following **optional** features are implemented:
 The following **additional** features are implemented:
 
 - [x] Hashtag
+- [x] Authentications
+- [x] Re-layout with header, footer and side-bar
 
 ## Video Walkthrough 
 
